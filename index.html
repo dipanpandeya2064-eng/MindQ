@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>MindQ - Intelligence Test</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+*{box-sizing:border-box;font-family:system-ui,-apple-system,Segoe UI,Roboto;}
+body{
+margin:0;
+background:linear-gradient(135deg,#0f172a,#020617);
+color:#fff;
+display:flex;
+justify-content:center;
+min-height:100vh;
+}
+.app{
+width:100%;
+max-width:520px;
+padding:16px;
+animation:fadeIn .6s ease;
+}
+header{
+display:flex;
+justify-content:space-between;
+align-items:center;
+margin-bottom:12px;
+}
+h1{font-size:1.6rem;margin:0;}
+button{
+background:#2563eb;
+border:none;
+color:white;
+padding:10px 14px;
+border-radius:10px;
+cursor:pointer;
+transition:.2s;
+}
+button:hover{transform:scale(1.05);}
+.progress{
+height:10px;
+background:#1e293b;
+border-radius:10px;
+overflow:hidden;
+margin:10px 0 16px;
+}
+.bar{
+height:100%;
+width:0%;
+background:linear-gradient(90deg,#22c55e,#3b82f6);
+transition:width .4s ease;
+}
+.card{
+background:#020617;
+border:1px solid #1e293b;
+border-radius:14px;
+padding:16px;
+animation:pop .3s ease;
+}
+.question{
+font-size:1.05rem;
+margin-bottom:14px;
+min-height:60px;
+}
+.options{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:10px;
+}
+.option{
+background:#020617;
+border:1px solid #334155;
+padding:12px;
+border-radius:10px;
+cursor:pointer;
+transition:.15s;
+text-align:center;
+}
+.option:hover{background:#1e293b;}
+.option.correct{background:#16a34a;}
+.option.wrong{background:#dc2626;}
+.stats{
+display:flex;
+justify-content:space-between;
+margin-top:10px;
+font-size:.9rem;
+opacity:.8;
+}
+.hidden{display:none;}
+
+.result{
+text-align:center;
+padding:20px;
+animation:fadeIn .6s ease;
+}
+.score{
+font-size:2.2rem;
+margin:10px 0;
+}
+
+@keyframes fadeIn{from{opacity:0;transform:translateY(10px);}to{opacity:1;}}
+@keyframes pop{from{transform:scale(.95);}to{transform:scale(1);}}
+
+@media(max-width:480px){
+.options{grid-template-columns:1fr;}
+h1{font-size:1.3rem;}
+}
+</style>
+</head>
+<body>
+
+<div class="app">
+<header>
+<h1>🧠 MindQ</h1>
+<button id="langBtn">नेपाली</button>
+</header>
+
+<div class="progress"><div class="bar" id="bar"></div></div>
+
+<div class="card" id="quizCard">
+<div class="question" id="question"></div>
+<div class="options">
+<div class="option"></div>
+<div class="option"></div>
+<div class="option"></div>
+<div class="option"></div>
+</div>
+<div class="stats">
+<div id="counter"></div>
+<div id="score"></div>
+</div>
+</div>
+
+<div class="card hidden result" id="resultCard">
+<h2>🎉 Result</h2>
+<div class="score" id="iq"></div>
+<p id="summary"></p>
+<button onclick="restart()">Restart</button>
+</div>
+
+</div>
+
+<script>
+// ================= FULL 45 QUESTIONS ==================
+const questions=[
+{q:{en:"2,4,8,16,?",np:"2,4,8,16,? पछि के आउँछ?"},o:{en:["18","24","32","30"],np:["18","24","32","30"]},a:2},
+{q:{en:"3,6,9,12,?",np:"3,6,9,12,? पछि के?"},o:{en:["14","15","18","21"],np:["14","15","18","21"]},a:1},
+{q:{en:"1,1,2,3,5,?",np:"1,1,2,3,5,? पछि?"},o:{en:["7","8","9","10"],np:["7","8","9","10"]},a:1},
+{q:{en:"5,10,20,40,?",np:"5,10,20,40,?"},o:{en:["60","80","90","100"],np:["60","80","90","100"]},a:1},
+{q:{en:"A,C,E,G,?",np:"A,C,E,G,?"},o:{en:["H","I","J","K"],np:["H","I","J","K"]},a:1},
+{q:{en:"Z,X,V,T,?",np:"Z,X,V,T,?"},o:{en:["R","Q","P","S"],np:["R","Q","P","S"]},a:0},
+{q:{en:"Which is different: Square, Triangle, Circle, Cube",np:"फरक कुन हो: वर्ग, त्रिकोण, वृत्त, घन"},o:{en:["Square","Triangle","Circle","Cube"],np:["वर्ग","त्रिकोण","वृत्त","घन"]},a:3},
+{q:{en:"If CAT = 24, DOG = ?",np:"यदि CAT = 24 भने DOG = ?"},o:{en:["26","28","30","32"],np:["26","28","30","32"]},a:2},
+{q:{en:"12,10,8,6,?",np:"12,10,8,6,?"},o:{en:["5","4","3","2"],np:["5","4","3","2"]},a:1},
+{q:{en:"Odd one: Red, Blue, Green, Apple",np:"फरक: रातो, निलो, हरियो, स्याउ"},o:{en:["Red","Blue","Green","Apple"],np:["रातो","निलो","हरियो","स्याउ"]},a:3},
+{q:{en:"4,9,16,25,?",np:"4,9,16,25,?"},o:{en:["30","36","40","49"],np:["30","36","40","49"]},a:1},
+{q:{en:"If 3x = 12, x = ?",np:"यदि 3x = 12 भने x = ?"},o:{en:["2","3","4","5"],np:["2","3","4","5"]},a:2},
+{q:{en:"1,4,9,16,?",np:"1,4,9,16,?"},o:{en:["20","24","25","30"],np:["20","24","25","30"]},a:2},
+{q:{en:"Which is heavier: 1kg iron or 1kg cotton?",np:"कुन भारी हो: १ केजी फलाम वा १ केजी कपास?"},o:{en:["Iron","Cotton","Both same","None"],np:["फलाम","कपास","दुवै समान","कुनै पनि होइन"]},a:2},
+{q:{en:"7,14,21,28,?",np:"7,14,21,28,?"},o:{en:["30","32","35","36"],np:["30","32","35","36"]},a:2},
+{q:{en:"Monday, Wednesday, Friday, ?",np:"सोमबार, बुधबार, शुक्रबार, ?"},o:{en:["Saturday","Sunday","Tuesday","Thursday"],np:["शनिबार","आइतबार","मंगलबार","बिहीबार"]},a:3},
+{q:{en:"If all Bloops are Razzies and all Razzies are Lazzies, are all Bloops Lazzies?",np:"यदि सबै ब्लुप्स र्याजी हुन् र सबै र्याजी लाजी हुन् भने के सबै ब्लुप्स लाजी हुन्?"},o:{en:["Yes","No","Maybe","Unknown"],np:["हो","होइन","सायद","थाहा छैन"]},a:0},
+{q:{en:"3,6,18,72,?",np:"3,6,18,72,?"},o:{en:["144","216","360","288"],np:["144","216","360","288"]},a:1},
+{q:{en:"Odd one: Pen, Pencil, Eraser, Chair",np:"फरक: कलम, पेन्सिल, रबर, कुर्सी"},o:{en:["Pen","Pencil","Eraser","Chair"],np:["कलम","पेन्सिल","रबर","कुर्सी"]},a:3},
+{q:{en:"If you rearrange 'LIVED' you get?",np:"'LIVED' उल्ट्याउँदा के बन्छ?"},o:{en:["EVIL","LIVE","VEIL","IDLE"],np:["EVIL","LIVE","VEIL","IDLE"]},a:0},
+{q:{en:"9,18,27,36,?",np:"9,18,27,36,?"},o:{en:["40","45","48","54"],np:["40","45","48","54"]},a:1},
+{q:{en:"Odd one: Rose, Lily, Lotus, Chair",np:"फरक: गुलाफ, लिली, कमल, कुर्सी"},o:{en:["Rose","Lily","Lotus","Chair"],np:["गुलाफ","लिली","कमल","कुर्सी"]},a:3},
+{q:{en:"2,3,5,7,11,?",np:"2,3,5,7,11,?"},o:{en:["12","13","14","15"],np:["12","13","14","15"]},a:1},
+{q:{en:"15,30,45,60,?",np:"15,30,45,60,?"},o:{en:["70","75","90","100"],np:["70","75","90","100"]},a:1},
+{q:{en:"Which is different: Car, Bus, Train, Tree",np:"फरक: कार, बस, रेल, रुख"},o:{en:["Car","Bus","Train","Tree"],np:["कार","बस","रेल","रुख"]},a:3},
+{q:{en:"1,8,27,64,?",np:"1,8,27,64,?"},o:{en:["100","125","144","216"],np:["100","125","144","216"]},a:1},
+{q:{en:"Odd one: Gold, Silver, Iron, Plastic",np:"फरक: सुन, चाँदी, फलाम, प्लास्टिक"},o:{en:["Gold","Silver","Iron","Plastic"],np:["सुन","चाँदी","फलाम","प्लास्टिक"]},a:3},
+{q:{en:"6,12,24,48,?",np:"6,12,24,48,?"},o:{en:["54","72","96","120"],np:["54","72","96","120"]},a:2},
+{q:{en:"Which is different: January, March, May, Sunday",np:"फरक: जनवरी, मार्च, मे, आइतबार"},o:{en:["January","March","May","Sunday"],np:["जनवरी","मार्च","मे","आइतबार"]},a:3},
+{q:{en:"10,20,30,40,?",np:"10,20,30,40,?"},o:{en:["45","50","60","70"],np:["45","50","60","70"]},a:1},
+{q:{en:"Which is different: Lion, Tiger, Dog, Leopard",np:"फरक: सिंह, बाघ, कुकुर, चितुवा"},o:{en:["Lion","Tiger","Dog","Leopard"],np:["सिंह","बाघ","कुकुर","चितुवा"]},a:2},
+{q:{en:"4,16,64,?",np:"4,16,64,?"},o:{en:["128","192","256","512"],np:["128","192","256","512"]},a:2},
+{q:{en:"Odd one: Milk, Water, Juice, Stone",np:"फरक: दूध, पानी, रस, ढुङ्गा"},o:{en:["Milk","Water","Juice","Stone"],np:["दूध","पानी","रस","ढुङ्गा"]},a:3},
+{q:{en:"5,25,125,?",np:"5,25,125,?"},o:{en:["250","375","500","625"],np:["250","375","500","625"]},a:3},
+{q:{en:"Which is different: Sun, Moon, Star, Cloud",np:"फरक: सूर्य, चन्द्रमा, तारा, बादल"},o:{en:["Sun","Moon","Star","Cloud"],np:["सूर्य","चन्द्रमा","तारा","बादल"]},a:3},
+{q:{en:"2,5,10,17,?",np:"2,5,10,17,?"},o:{en:["24","26","28","30"],np:["24","26","28","30"]},a:1},
+{q:{en:"Odd one: Apple, Banana, Mango, Potato",np:"फरक: स्याउ, केरा, आँप, आलु"},o:{en:["Apple","Banana","Mango","Potato"],np:["स्याउ","केरा","आँप","आलु"]},a:3},
+{q:{en:"1,3,6,10,15,?",np:"1,3,6,10,15,?"},o:{en:["18","20","21","28"],np:["18","20","21","28"]},a:2},
+{q:{en:"Which is different: Chair, Table, Bed, Shirt",np:"फरक: कुर्सी, टेबल, खाट, सर्ट"},o:{en:["Chair","Table","Bed","Shirt"],np:["कुर्सी","टेबल","खाट","सर्ट"]},a:3},
+{q:{en:"7,49,343,?",np:"7,49,343,?"},o:{en:["1029","2101","2401","2801"],np:["1029","2101","2401","2801"]},a:0}
+];
+
+// ================= STATE ==================
+let lang="en";
+let used=[];
+let index=0;
+let score=0;
+const TOTAL=30;
+let locked=false;
+
+// ================= ELEMENTS ==================
+const qEl=document.getElementById("question");
+const opts=[...document.querySelectorAll(".option")];
+const counter=document.getElementById("counter");
+const scoreEl=document.getElementById("score");
+const bar=document.getElementById("bar");
+const quizCard=document.getElementById("quizCard");
+const resultCard=document.getElementById("resultCard");
+
+// ================= FUNCTIONS ==================
+function pickQuestion(){
+let id;
+do{id=Math.floor(Math.random()*questions.length);}
+while(used.includes(id));
+used.push(id);
+return questions[id];
+}
+
+let current=pickQuestion();
+
+function render(){
+locked=false;
+qEl.textContent=current.q[lang];
+opts.forEach((btn,i)=>{
+btn.className="option";
+btn.textContent=current.o[lang][i];
+});
+counter.textContent=`${index+1} / ${TOTAL}`;
+scoreEl.textContent=`Score: ${score}`;
+bar.style.width=((index)/TOTAL*100)+"%";
+}
+
+opts.forEach((btn,i)=>{
+btn.onclick=()=>{
+if(locked) return;
+locked=true;
+if(i===current.a){score++; btn.classList.add("correct");}
+else btn.classList.add("wrong");
+setTimeout(next,400);
+};
+});
+
+function next(){
+index++;
+if(index>=TOTAL){finish(); return;}
+current=pickQuestion();
+render();
+}
+
+function finish(){
+quizCard.classList.add("hidden");
+resultCard.classList.remove("hidden");
+let iq=Math.round(80+(score/TOTAL)*60);
+document.getElementById("iq").textContent=`IQ ≈ ${iq}`;
+document.getElementById("summary").textContent=
+iq>120?"Excellent intelligence 🧠":
+iq>100?"Above average 👍":
+iq>90?"Average 🙂":"Needs improvement 💪";
+}
+
+function restart(){ location.reload(); }
+
+// Language Toggle
+document.getElementById("langBtn").onclick=()=>{
+lang = lang==="en"?"np":"en";
+document.getElementById("langBtn").textContent=lang==="en"?"नेपाली":"English";
+render();
+};
+
+// Start
+render();
+</script>
+
+</body>
+</html>
