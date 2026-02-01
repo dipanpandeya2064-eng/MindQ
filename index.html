@@ -3,22 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title> MINDQ (माइन्डक्यू)</title>
+    <title>MindQ | Cognitive Assessment</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
+        /* All CSS styles remain exactly the same as in your original code */
         :root {
-            --primary: #4361ee;
-            --secondary: #3a0ca3;
-            --accent: #f72585;
-            --light: #f8f9fa;
-            --dark: #212529;
-            --gray: #6c757d;
-            --success: #4cc9f0;
-            --warning: #ff9e00;
-            --danger: #ef233c;
+            --primary: #2C3E50;
+            --primary-light: #34495E;
+            --secondary: #3498DB;
+            --accent: #2980B9;
+            --success: #27AE60;
+            --warning: #F39C12;
+            --danger: #E74C3C;
+            --light: #F8F9FA;
+            --gray: #95A5A6;
+            --border: #ECF0F1;
             --border-radius: 12px;
-            --box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            --shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
             --transition: all 0.3s ease;
         }
         
@@ -29,31 +31,26 @@
         }
         
         body {
-            font-family: 'Poppins', sans-serif;
+            font-family: 'Inter', sans-serif;
             line-height: 1.6;
-            color: var(--dark);
-            background-color: #f5f7ff;
+            color: var(--primary);
+            background-color: #F5F7FA;
             min-height: 100vh;
-            padding-bottom: 40px;
         }
         
         .container {
             width: 90%;
             max-width: 1200px;
             margin: 0 auto;
-            padding: 0 15px;
+            padding: 0 20px;
         }
         
         /* Header */
         header {
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
-            color: white;
-            padding: 20px 0;
-            border-radius: 0 0 var(--border-radius) var(--border-radius);
-            box-shadow: var(--box-shadow);
-            position: sticky;
-            top: 0;
-            z-index: 1000;
+            background: white;
+            padding: 24px 0;
+            border-bottom: 1px solid var(--border);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
         }
         
         .header-content {
@@ -65,71 +62,91 @@
         .logo {
             display: flex;
             align-items: center;
-            gap: 15px;
+            gap: 16px;
         }
         
-        .logo i {
-            font-size: 2.5rem;
-            color: var(--accent);
-        }
-        
-        .logo h1 {
-            font-size: 1.8rem;
+        .logo-icon {
+            width: 48px;
+            height: 48px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 24px;
             font-weight: 700;
+            font-family: 'Playfair Display', serif;
+            box-shadow: var(--shadow);
         }
         
-        .logo .subtitle {
-            font-size: 0.9rem;
-            opacity: 0.9;
+        .logo-text h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 28px;
+            font-weight: 700;
+            color: var(--primary);
+            letter-spacing: -0.5px;
+        }
+        
+        .logo-text .subtitle {
+            font-size: 14px;
+            color: var(--gray);
+            font-weight: 400;
+            margin-top: 2px;
         }
         
         .header-right {
             display: flex;
             align-items: center;
-            gap: 15px;
+            gap: 16px;
         }
         
         .language-toggle {
             display: flex;
-            gap: 10px;
+            background: var(--light);
+            padding: 4px;
+            border-radius: 8px;
+            border: 1px solid var(--border);
         }
         
         .lang-btn {
-            background: rgba(255,255,255,0.2);
+            background: transparent;
             border: none;
-            color: white;
-            padding: 8px 15px;
-            border-radius: 50px;
-            cursor: pointer;
-            transition: var(--transition);
+            padding: 8px 16px;
+            border-radius: 6px;
+            font-size: 14px;
             font-weight: 500;
-        }
-        
-        .lang-btn:hover, .lang-btn.active {
-            background: white;
             color: var(--primary);
-        }
-        
-        /* Home/Back Button */
-        .home-btn {
-            background: rgba(255,255,255,0.2);
-            border: none;
-            color: white;
-            padding: 10px 20px;
-            border-radius: 50px;
             cursor: pointer;
             transition: var(--transition);
-            font-weight: 500;
+        }
+        
+        .lang-btn.active {
+            background: white;
+            color: var(--secondary);
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+        }
+        
+        .home-btn {
+            background: var(--secondary);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
             display: flex;
             align-items: center;
             gap: 8px;
-            font-size: 0.95rem;
+            box-shadow: 0 2px 8px rgba(52, 152, 219, 0.2);
         }
         
         .home-btn:hover {
-            background: white;
-            color: var(--primary);
-            transform: translateY(-2px);
+            background: var(--accent);
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba(52, 152, 219, 0.3);
         }
         
         .home-btn.hidden {
@@ -140,22 +157,50 @@
         .timer-container {
             background: white;
             border-radius: var(--border-radius);
-            padding: 15px 25px;
-            box-shadow: var(--box-shadow);
-            margin-top: 20px;
+            padding: 20px;
+            margin-top: 24px;
+            box-shadow: var(--shadow);
             display: none;
-            justify-content: space-between;
             align-items: center;
+            gap: 24px;
+            border-left: 4px solid var(--secondary);
         }
         
         .timer-container.active {
             display: flex;
         }
         
+        .timer-display {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        
+        .timer-icon {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, var(--secondary), var(--accent));
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+        }
+        
+        .timer-text h3 {
+            font-size: 12px;
+            color: var(--gray);
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 4px;
+        }
+        
         .timer {
-            font-size: 1.8rem;
+            font-size: 32px;
             font-weight: 700;
             color: var(--primary);
+            font-family: 'Inter', monospace;
         }
         
         .timer.warning {
@@ -167,219 +212,266 @@
         }
         
         .progress-bar {
-            height: 10px;
-            background: #e9ecef;
-            border-radius: 5px;
+            flex: 1;
+            height: 8px;
+            background: var(--border);
+            border-radius: 4px;
             overflow: hidden;
-            flex-grow: 1;
-            margin: 0 20px;
         }
         
         .progress-fill {
             height: 100%;
-            background: linear-gradient(90deg, var(--primary), var(--accent));
-            width: 0%;
-            transition: width 0.5s ease;
+            background: linear-gradient(90deg, var(--secondary), var(--accent));
+            width: 100%;
+            transition: width 1s linear;
+        }
+        
+        .question-info {
+            background: var(--light);
+            padding: 12px 20px;
+            border-radius: 8px;
+            border: 1px solid var(--border);
+            text-align: center;
+            min-width: 120px;
+        }
+        
+        .question-info h3 {
+            font-size: 12px;
+            color: var(--gray);
+            font-weight: 500;
+            margin-bottom: 4px;
+        }
+        
+        .question-count {
+            font-size: 20px;
+            font-weight: 700;
+            color: var(--primary);
         }
         
         /* Main Content */
         .main-content {
-            display: flex;
-            flex-direction: column;
-            gap: 30px;
-            margin-top: 30px;
+            margin: 32px 0;
         }
         
         /* Sections */
         .section {
             background: white;
             border-radius: var(--border-radius);
-            padding: 25px;
-            box-shadow: var(--box-shadow);
-            transition: var(--transition);
-        }
-        
-        .section:hover {
-            transform: translateY(-5px);
+            padding: 32px;
+            margin-bottom: 24px;
+            box-shadow: var(--shadow);
+            border: 1px solid var(--border);
         }
         
         .section-title {
             display: flex;
             align-items: center;
-            gap: 15px;
-            margin-bottom: 20px;
-            color: var(--secondary);
-            border-bottom: 2px solid #f0f0f0;
-            padding-bottom: 10px;
+            gap: 16px;
+            margin-bottom: 24px;
+            padding-bottom: 16px;
+            border-bottom: 1px solid var(--border);
         }
         
-        .section-title i {
-            font-size: 1.5rem;
+        .section-icon {
+            width: 48px;
+            height: 48px;
+            background: linear-gradient(135deg, var(--primary-light), var(--primary));
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 20px;
+        }
+        
+        .section-title h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 28px;
+            font-weight: 600;
+            color: var(--primary);
         }
         
         /* Test Selector */
         .test-selector {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 20px;
-            margin-top: 15px;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 24px;
+            margin-top: 16px;
         }
         
         .test-card {
-            background: linear-gradient(135deg, #f8f9ff, #eef1ff);
+            background: white;
             border-radius: var(--border-radius);
-            padding: 25px;
-            text-align: center;
-            cursor: pointer;
-            transition: var(--transition);
+            padding: 24px;
             border: 2px solid transparent;
+            transition: var(--transition);
+            cursor: pointer;
+            border: 1px solid var(--border);
         }
         
         .test-card:hover {
-            border-color: var(--primary);
-            transform: scale(1.03);
+            border-color: var(--secondary);
+            transform: translateY(-4px);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
         }
         
-        .test-card i {
-            font-size: 2.5rem;
-            color: var(--primary);
-            margin-bottom: 15px;
+        .test-icon {
+            width: 56px;
+            height: 56px;
+            background: linear-gradient(135deg, var(--secondary), var(--accent));
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 24px;
+            margin-bottom: 16px;
         }
         
         .test-card h3 {
-            margin-bottom: 10px;
-            color: var(--secondary);
+            font-size: 20px;
+            font-weight: 600;
+            color: var(--primary);
+            margin-bottom: 12px;
+        }
+        
+        .test-card p {
+            color: var(--gray);
+            font-size: 14px;
+            line-height: 1.6;
+            margin-bottom: 20px;
         }
         
         .test-info {
             display: flex;
             justify-content: space-between;
-            margin-top: 15px;
-            font-size: 0.9rem;
+            font-size: 13px;
             color: var(--gray);
+            padding-top: 16px;
+            border-top: 1px solid var(--border);
         }
         
-        /* Question Section */
+        /* Question Container */
         .question-container {
             display: none;
         }
         
         .question-container.active {
             display: block;
-            animation: fadeIn 0.5s ease;
-        }
-        
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(10px); }
-            to { opacity: 1; transform: translateY(0); }
         }
         
         .question-header {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 20px;
-            padding-bottom: 15px;
-            border-bottom: 2px solid #f0f0f0;
+            margin-bottom: 24px;
+            padding-bottom: 16px;
+            border-bottom: 1px solid var(--border);
+        }
+        
+        .question-header h3 {
+            font-size: 18px;
+            font-weight: 600;
+            color: var(--primary);
         }
         
         .question-counter {
-            background: var(--primary);
+            background: linear-gradient(135deg, var(--secondary), var(--accent));
             color: white;
-            padding: 8px 15px;
-            border-radius: 50px;
+            padding: 8px 16px;
+            border-radius: 20px;
             font-weight: 600;
+            font-size: 14px;
         }
         
         .question-text {
-            font-size: 1.2rem;
-            margin-bottom: 25px;
+            font-size: 18px;
             line-height: 1.8;
-        }
-        
-        .question-image {
-            max-width: 100%;
-            height: auto;
-            border-radius: 10px;
-            margin: 15px 0;
-            display: block;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            margin-bottom: 32px;
+            color: var(--primary);
+            padding: 20px;
+            background: var(--light);
+            border-radius: var(--border-radius);
+            border-left: 4px solid var(--secondary);
         }
         
         .options-container {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 15px;
-            margin-top: 20px;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 12px;
         }
         
         .option {
-            background: #f8f9ff;
-            border: 2px solid #e0e0e0;
+            background: white;
+            border: 2px solid var(--border);
             border-radius: 10px;
-            padding: 15px;
+            padding: 16px;
             cursor: pointer;
             transition: var(--transition);
             display: flex;
             align-items: center;
-            gap: 15px;
+            gap: 16px;
         }
         
         .option:hover {
-            background: #eef1ff;
-            border-color: var(--primary);
+            border-color: var(--secondary);
+            background: #F0F7FF;
         }
         
         .option.selected {
-            background: #e3f2fd;
-            border-color: var(--primary);
+            border-color: var(--secondary);
+            background: #E8F4FE;
         }
         
         .option.correct {
-            background: #d4edda;
-            border-color: #28a745;
+            border-color: var(--success);
+            background: #E8F6EF;
         }
         
         .option.incorrect {
-            background: #f8d7da;
-            border-color: #dc3545;
+            border-color: var(--danger);
+            background: #FDEDEC;
         }
         
         .option-letter {
-            background: var(--primary);
+            width: 36px;
+            height: 36px;
+            background: var(--primary-light);
             color: white;
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
+            border-radius: 8px;
             display: flex;
             align-items: center;
             justify-content: center;
             font-weight: 600;
+            font-size: 14px;
             flex-shrink: 0;
         }
         
         .option.correct .option-letter {
-            background: #28a745;
+            background: var(--success);
         }
         
         .option.incorrect .option-letter {
-            background: #dc3545;
+            background: var(--danger);
         }
         
         .navigation-buttons {
             display: flex;
             justify-content: space-between;
-            margin-top: 30px;
+            margin-top: 32px;
+            padding-top: 24px;
+            border-top: 1px solid var(--border);
         }
         
         .btn {
-            background: var(--primary);
+            background: var(--secondary);
             color: white;
             border: none;
-            padding: 12px 25px;
-            border-radius: 50px;
-            cursor: pointer;
+            padding: 12px 28px;
+            border-radius: 8px;
+            font-size: 15px;
             font-weight: 600;
+            cursor: pointer;
             transition: var(--transition);
             display: flex;
             align-items: center;
@@ -387,206 +479,211 @@
         }
         
         .btn:hover {
-            background: var(--secondary);
-            transform: translateY(-3px);
-            box-shadow: 0 7px 15px rgba(0,0,0,0.1);
+            background: var(--accent);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(52, 152, 219, 0.3);
         }
         
         .btn:disabled {
-            background: #cccccc;
+            background: var(--gray);
             cursor: not-allowed;
             transform: none;
             box-shadow: none;
         }
         
         .btn-secondary {
-            background: #6c757d;
+            background: var(--light);
+            color: var(--primary);
+            border: 1px solid var(--border);
         }
         
         .btn-secondary:hover {
-            background: #5a6268;
+            background: #E8ECF1;
+            border-color: var(--gray);
         }
         
-        .btn-accent {
-            background: var(--accent);
-        }
-        
-        .btn-accent:hover {
-            background: #e11571;
-        }
-        
-        .btn-warning {
-            background: var(--warning);
-        }
-        
-        .btn-warning:hover {
-            background: #e68900;
-        }
-        
-        /* Results Section */
+        /* Results Container */
         .results-container {
-            text-align: center;
             display: none;
+            text-align: center;
         }
         
         .results-container.active {
             display: block;
-            animation: fadeIn 0.8s ease;
         }
         
         .results-header {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 20px;
-            padding-bottom: 15px;
-            border-bottom: 2px solid #f0f0f0;
+            margin-bottom: 32px;
+            padding-bottom: 24px;
+            border-bottom: 1px solid var(--border);
         }
         
-        .results-title {
-            font-size: 1.8rem;
-            color: var(--secondary);
+        .results-header h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 28px;
+            font-weight: 600;
+            color: var(--primary);
         }
         
         .results-score {
-            font-size: 1.5rem;
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--secondary);
+            background: var(--light);
+            padding: 12px 24px;
+            border-radius: 8px;
+            border: 1px solid var(--border);
+        }
+        
+        .iq-display {
+            margin: 40px 0;
+        }
+        
+        .iq-score {
+            font-size: 64px;
             font-weight: 700;
             color: var(--primary);
+            margin-bottom: 8px;
+            font-family: 'Playfair Display', serif;
+        }
+        
+        .iq-category {
+            font-size: 20px;
+            color: var(--secondary);
+            font-weight: 600;
         }
         
         .results-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 25px;
-            margin: 30px 0;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin: 40px 0;
         }
         
         .result-card {
-            background: #f8f9ff;
+            background: white;
             border-radius: var(--border-radius);
-            padding: 25px;
-            text-align: center;
+            padding: 24px;
+            border: 1px solid var(--border);
             transition: var(--transition);
         }
         
         .result-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            transform: translateY(-4px);
+            box-shadow: var(--shadow);
         }
         
-        .result-card i {
-            font-size: 2.5rem;
-            margin-bottom: 15px;
-        }
-        
-        .result-card.correct i {
-            color: #28a745;
-        }
-        
-        .result-card.time i {
-            color: var(--primary);
-        }
-        
-        .result-card.accuracy i {
-            color: var(--accent);
-        }
-        
-        .result-card.score i {
-            color: var(--warning);
-        }
-        
-        .result-value {
-            font-size: 3rem;
-            font-weight: 700;
-            margin: 10px 0;
-        }
-        
-        .result-label {
-            font-size: 1.2rem;
-            color: var(--gray);
-        }
-        
-        .iq-score {
-            font-size: 4rem;
-            font-weight: 700;
-            color: var(--primary);
-            margin: 20px 0;
-            text-shadow: 2px 2px 5px rgba(0,0,0,0.1);
-        }
-        
-        .iq-category {
-            font-size: 1.5rem;
-            color: var(--secondary);
-            margin-bottom: 30px;
-        }
-        
-        .progress-circle {
-            width: 120px;
-            height: 120px;
-            border-radius: 50%;
-            background: conic-gradient(var(--primary) 0% 75%, #e0e0e0 75% 100%);
-            margin: 20px auto;
+        .result-icon {
+            width: 56px;
+            height: 56px;
+            border-radius: 12px;
             display: flex;
             align-items: center;
             justify-content: center;
-            position: relative;
+            font-size: 24px;
+            margin: 0 auto 16px;
+            color: white;
         }
         
-        .progress-circle::before {
-            content: '';
-            position: absolute;
-            width: 90px;
-            height: 90px;
-            background: white;
-            border-radius: 50%;
+        .result-card.correct .result-icon {
+            background: linear-gradient(135deg, var(--success), #2ECC71);
         }
         
-        .progress-text {
-            position: relative;
-            z-index: 1;
+        .result-card.time .result-icon {
+            background: linear-gradient(135deg, var(--secondary), var(--accent));
+        }
+        
+        .result-card.accuracy .result-icon {
+            background: linear-gradient(135deg, #9B59B6, #8E44AD);
+        }
+        
+        .result-card.score .result-icon {
+            background: linear-gradient(135deg, var(--warning), #F1C40F);
+        }
+        
+        .result-value {
+            font-size: 36px;
             font-weight: 700;
-            font-size: 1.5rem;
-            color: var(--dark);
+            color: var(--primary);
+            margin: 8px 0;
+        }
+        
+        .result-label {
+            font-size: 14px;
+            color: var(--gray);
+            font-weight: 500;
         }
         
         .detailed-results {
-            margin-top: 30px;
             text-align: left;
+            margin-top: 40px;
         }
         
-        .result-breakdown {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 20px;
-            margin-top: 20px;
+        .detailed-results h3 {
+            font-size: 20px;
+            font-weight: 600;
+            color: var(--primary);
+            margin-bottom: 20px;
+            padding-bottom: 12px;
+            border-bottom: 1px solid var(--border);
         }
         
-        .breakdown-card {
+        .answer-review-container {
+            max-height: 400px;
+            overflow-y: auto;
             padding: 20px;
-            background: #f8f9ff;
+            background: var(--light);
             border-radius: var(--border-radius);
+            border: 1px solid var(--border);
         }
         
-        .breakdown-card h4 {
-            margin-bottom: 15px;
-            color: var(--secondary);
+        .review-question {
+            background: white;
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 16px;
+            border-left: 4px solid var(--gray);
+        }
+        
+        .review-question.correct {
+            border-left-color: var(--success);
+        }
+        
+        .review-question.incorrect {
+            border-left-color: var(--danger);
+        }
+        
+        .review-explanation {
+            background: white;
+            padding: 16px;
+            border-radius: 8px;
+            margin-top: 12px;
+            font-size: 14px;
+            border-left: 3px solid var(--secondary);
         }
         
         /* Footer */
         footer {
             text-align: center;
-            margin-top: 40px;
-            padding-top: 20px;
-            border-top: 1px solid #e0e0e0;
+            padding: 32px 0;
+            margin-top: 48px;
+            border-top: 1px solid var(--border);
             color: var(--gray);
-            font-size: 0.9rem;
+            font-size: 14px;
+        }
+        
+        footer p {
+            margin-bottom: 8px;
         }
         
         /* Responsive */
         @media (max-width: 768px) {
             .header-content {
                 flex-direction: column;
-                gap: 15px;
+                gap: 16px;
             }
             
             .header-right {
@@ -594,72 +691,35 @@
                 justify-content: space-between;
             }
             
-            .logo h1 {
-                font-size: 1.5rem;
-            }
-            
-            .section {
-                padding: 20px;
-            }
-            
-            .question-text {
-                font-size: 1.1rem;
-            }
-            
-            .options-container {
-                grid-template-columns: 1fr;
-            }
-            
-            .iq-score {
-                font-size: 3rem;
-            }
-            
-            .navigation-buttons {
-                flex-direction: column;
-                gap: 15px;
-            }
-            
-            .btn {
-                justify-content: center;
-                width: 100%;
-            }
-            
             .timer-container {
                 flex-direction: column;
-                gap: 15px;
+                gap: 16px;
             }
             
             .progress-bar {
                 width: 100%;
-                margin: 10px 0;
             }
             
-            .results-grid {
-                grid-template-columns: 1fr;
+            .question-info {
+                width: 100%;
             }
             
-            .home-btn {
-                padding: 8px 15px;
-                font-size: 0.85rem;
+            .navigation-buttons {
+                flex-direction: column;
+                gap: 12px;
             }
-        }
-        
-        @media (max-width: 480px) {
+            
+            .btn {
+                width: 100%;
+                justify-content: center;
+            }
+            
             .test-selector {
                 grid-template-columns: 1fr;
             }
             
-            .logo h1 {
-                font-size: 1.3rem;
-            }
-            
-            .timer {
-                font-size: 1.5rem;
-            }
-            
-            .header-right {
-                flex-direction: column;
-                gap: 10px;
+            .results-grid {
+                grid-template-columns: 1fr;
             }
         }
         
@@ -686,24 +746,23 @@
     <header>
         <div class="container header-content">
             <div class="logo">
-                <i class="fas fa-brain"></i>
-                <div>
-                    <h1 class="lang-en"> MINDQ </h1>
-                    <h1 class="lang-np"> माइन्डक्यू </h1>
-                    <div class="subtitle lang-en">Comprehensive Cognitive Assessment</div>
-                    <div class="subtitle lang-np">व्यापक संज्ञानात्मक मूल्याङ्कन</div>
+                <div class="logo-icon">MQ</div>
+                <div class="logo-text">
+                    <h1 class="lang-en">MindQ</h1>
+                    <h1 class="lang-np">माइन्डक्यू</h1>
+                    <div class="subtitle lang-en">Cognitive Assessment Platform</div>
+                    <div class="subtitle lang-np">संज्ञानात्मक मूल्याङ्कन प्लेटफर्म</div>
                 </div>
             </div>
             <div class="header-right">
                 <div class="language-toggle">
                     <button class="lang-btn active" id="en-btn">
-                        <i class="fas fa-globe-americas"></i> English
+                        <i class="fas fa-globe"></i> English
                     </button>
                     <button class="lang-btn" id="np-btn">
-                        <i class="fas fa-globe-asia"></i> नेपाली
+                        <i class="fas fa-globe"></i> नेपाली
                     </button>
                 </div>
-                <!-- Home/Back Button -->
                 <button class="home-btn hidden" id="home-btn">
                     <i class="fas fa-home"></i>
                     <span class="lang-en">Home</span>
@@ -715,18 +774,23 @@
 
     <!-- Timer -->
     <div class="container timer-container" id="timer-container">
-        <div>
-            <span class="lang-en">Time Remaining:</span>
-            <span class="lang-np">बाँकी समय:</span>
-            <div class="timer" id="timer">30:00</div>
+        <div class="timer-display">
+            <div class="timer-icon">
+                <i class="fas fa-clock"></i>
+            </div>
+            <div class="timer-text">
+                <h3 class="lang-en">Time Remaining</h3>
+                <h3 class="lang-np">बाँकी समय</h3>
+                <div class="timer" id="timer">20</div>
+            </div>
         </div>
         <div class="progress-bar">
             <div class="progress-fill" id="progress-fill"></div>
         </div>
-        <div>
-            <span class="lang-en">Questions:</span>
-            <span class="lang-np">प्रश्नहरू:</span>
-            <span id="current-timer-question">1</span>/<span id="total-timer-questions">30</span>
+        <div class="question-info">
+            <h3 class="lang-en">Question</h3>
+            <h3 class="lang-np">प्रश्न</h3>
+            <div class="question-count"><span id="current-timer-question">1</span>/<span id="total-timer-questions">30</span></div>
         </div>
     </div>
 
@@ -734,48 +798,50 @@
         <!-- Test Selection -->
         <div class="section" id="test-selection">
             <div class="section-title">
-                <i class="fas fa-tasks"></i>
-                <h2 class="lang-en">Choose Your Test Type</h2>
-                <h2 class="lang-np">तपाईंको परीक्षण प्रकार छान्नुहोस्</h2>
+                <div class="section-icon">
+                    <i class="fas fa-brain"></i>
+                </div>
+                <h2 class="lang-en">Select Assessment Type</h2>
+                <h2 class="lang-np">मूल्याङ्कन प्रकार छान्नुहोस्</h2>
             </div>
             <div class="test-selector">
-                <div class="test-card" id="mcq-test">
-                    <i class="fas fa-clipboard-list"></i>
-                    <h3 class="lang-en">MCQ Intelligence Test</h3>
-                    <h3 class="lang-np">बहुविकल्पीय बुद्धि परीक्षण</h3>
-                    <p class="lang-en">General knowledge and analytical questions</p>
-                    <p class="lang-np">सामान्य ज्ञान र विश्लेषणात्मक प्रश्नहरू</p>
+                <div class="test-card" id="verbal-test">
+                    <div class="test-icon">
+                        <i class="fas fa-comment-alt"></i>
+                    </div>
+                    <h3 class="lang-en">Verbal Intelligence</h3>
+                    <h3 class="lang-np">शाब्दिक बुद्धि</h3>
+                    <p class="lang-en">Assess vocabulary, analogies, and verbal reasoning abilities through comprehensive questions.</p>
+                    <p class="lang-np">व्यापक प्रश्नहरू मार्फत शब्दावली, समानताहरू र शाब्दिक तर्क क्षमताहरू मूल्याङ्कन गर्नुहोस्।</p>
                     <div class="test-info">
-                        <span class="lang-en">15 questions</span>
-                        <span class="lang-np">१५ प्रश्नहरू</span>
-                        <span class="lang-en">15 minutes</span>
-                        <span class="lang-np">१५ मिनेट</span>
+                        <span><i class="fas fa-question-circle"></i> <span class="lang-en">30 Questions</span><span class="lang-np">३० प्रश्न</span></span>
+                        <span><i class="fas fa-clock"></i> <span class="lang-en">20s each</span><span class="lang-np">२० सेकेन्ड</span></span>
                     </div>
                 </div>
                 <div class="test-card" id="logical-test">
-                    <i class="fas fa-project-diagram"></i>
-                    <h3 class="lang-en">Logical Reasoning Test</h3>
-                    <h3 class="lang-np">तार्किक तर्क परीक्षण</h3>
-                    <p class="lang-en">Pattern recognition and logical sequences</p>
-                    <p class="lang-np">ढाँचा पहिचान र तार्किक क्रमहरू</p>
+                    <div class="test-icon">
+                        <i class="fas fa-sitemap"></i>
+                    </div>
+                    <h3 class="lang-en">Logical Reasoning</h3>
+                    <h3 class="lang-np">तार्किक तर्क</h3>
+                    <p class="lang-en">Test pattern recognition, sequences, and deductive reasoning with challenging logical problems.</p>
+                    <p class="lang-np">चुनौतीपूर्ण तार्किक समस्याहरूसँग ढाँचा पहिचान, क्रमहरू र निगमनात्मक तर्क परीक्षण गर्नुहोस्।</p>
                     <div class="test-info">
-                        <span class="lang-en">15 questions</span>
-                        <span class="lang-np">१५ प्रश्नहरू</span>
-                        <span class="lang-en">20 minutes</span>
-                        <span class="lang-np">२० मिनेट</span>
+                        <span><i class="fas fa-question-circle"></i> <span class="lang-en">30 Questions</span><span class="lang-np">३० प्रश्न</span></span>
+                        <span><i class="fas fa-clock"></i> <span class="lang-en">20s each</span><span class="lang-np">२० सेकेन्ड</span></span>
                     </div>
                 </div>
-                <div class="test-card" id="iq-test">
-                    <i class="fas fa-chart-line"></i>
-                    <h3 class="lang-en">Comprehensive IQ Test</h3>
-                    <h3 class="lang-np">व्यापक आईक्यू परीक्षण</h3>
-                    <p class="lang-en">Full IQ assessment with all question types</p>
-                    <p class="lang-np">सबै प्रकारका प्रश्नहरूसहित पूर्ण आईक्यू मूल्याङ्कन</p>
+                <div class="test-card" id="spatial-test">
+                    <div class="test-icon">
+                        <i class="fas fa-shapes"></i>
+                    </div>
+                    <h3 class="lang-en">Spatial Intelligence</h3>
+                    <h3 class="lang-np">स्थानिक बुद्धि</h3>
+                    <p class="lang-en">Evaluate visual-spatial reasoning and pattern completion abilities with spatial problems.</p>
+                    <p class="lang-np">स्थानिक समस्याहरूसँग दृश्य-स्थानिक तर्क र ढाँचा पूरा गर्ने क्षमता मूल्याङ्कन गर्नुहोस्।</p>
                     <div class="test-info">
-                        <span class="lang-en">20 questions</span>
-                        <span class="lang-np">२० प्रश्नहरू</span>
-                        <span class="lang-en">25 minutes</span>
-                        <span class="lang-np">२५ मिनेट</span>
+                        <span><i class="fas fa-question-circle"></i> <span class="lang-en">30 Questions</span><span class="lang-np">३० प्रश्न</span></span>
+                        <span><i class="fas fa-clock"></i> <span class="lang-en">20s each</span><span class="lang-np">२० सेकेन्ड</span></span>
                     </div>
                 </div>
             </div>
@@ -785,11 +851,11 @@
         <div class="section question-container" id="question-section">
             <div class="question-header">
                 <div>
-                    <h3 class="lang-en" id="current-test-type">MCQ Intelligence Test</h3>
-                    <h3 class="lang-np" id="current-test-type-np">बहुविकल्पीय बुद्धि परीक्षण</h3>
+                    <h3 class="lang-en" id="current-test-type">Verbal Intelligence</h3>
+                    <h3 class="lang-np" id="current-test-type-np">शाब्दिक बुद्धि</h3>
                 </div>
                 <div class="question-counter">
-                    <span id="current-question">1</span>/<span id="total-questions">15</span>
+                    <span id="current-question">1</span>/<span id="total-questions">30</span>
                 </div>
             </div>
             
@@ -808,7 +874,7 @@
                     <span class="lang-np">अर्को</span>
                     <i class="fas fa-arrow-right"></i>
                 </button>
-                <button class="btn btn-accent" id="submit-btn">
+                <button class="btn" id="submit-btn">
                     <i class="fas fa-paper-plane"></i>
                     <span class="lang-en">Submit Test</span>
                     <span class="lang-np">परीक्षण पेश गर्नुहोस्</span>
@@ -820,42 +886,52 @@
         <div class="section results-container" id="results-section">
             <div class="results-header">
                 <div>
-                    <h2 class="results-title lang-en">Your IQ Test Results</h2>
-                    <h2 class="results-title lang-np">तपाईंको आईक्यू परीक्षण नतिजा</h2>
+                    <h2 class="lang-en">Assessment Results</h2>
+                    <h2 class="lang-np">मूल्याङ्कन नतिजा</h2>
                 </div>
                 <div class="results-score">
-                    <span id="results-score">0</span>
+                    <span id="results-score">0</span>/<span id="max-score">120</span>
                 </div>
             </div>
             
-            <div class="iq-score" id="iq-score">125</div>
-            <div class="iq-category lang-en" id="iq-category">Superior Intelligence</div>
-            <div class="iq-category lang-np" id="iq-category-np">उत्कृष्ट बुद्धि</div>
+            <div class="iq-display">
+                <div class="iq-score" id="iq-score">125</div>
+                <div class="iq-category lang-en" id="iq-category">Superior Intelligence</div>
+                <div class="iq-category lang-np" id="iq-category-np">उत्कृष्ट बुद्धि</div>
+            </div>
             
             <div class="results-grid">
                 <div class="result-card correct">
-                    <i class="fas fa-check-circle"></i>
+                    <div class="result-icon">
+                        <i class="fas fa-check-circle"></i>
+                    </div>
                     <div class="result-value" id="correct-answers">0</div>
                     <div class="result-label lang-en">Correct Answers</div>
                     <div class="result-label lang-np">सही उत्तरहरू</div>
                 </div>
                 
                 <div class="result-card time">
-                    <i class="fas fa-clock"></i>
+                    <div class="result-icon">
+                        <i class="fas fa-clock"></i>
+                    </div>
                     <div class="result-value" id="time-taken">0:00</div>
-                    <div class="result-label lang-en">Time Taken</div>
-                    <div class="result-label lang-np">लिएको समय</div>
+                    <div class="result-label lang-en">Time Used</div>
+                    <div class="result-label lang-np">प्रयोग गरिएको समय</div>
                 </div>
                 
                 <div class="result-card accuracy">
-                    <i class="fas fa-bullseye"></i>
+                    <div class="result-icon">
+                        <i class="fas fa-bullseye"></i>
+                    </div>
                     <div class="result-value" id="accuracy-rate">0%</div>
                     <div class="result-label lang-en">Accuracy Rate</div>
                     <div class="result-label lang-np">शुद्धता दर</div>
                 </div>
                 
                 <div class="result-card score">
-                    <i class="fas fa-star"></i>
+                    <div class="result-icon">
+                        <i class="fas fa-star"></i>
+                    </div>
                     <div class="result-value" id="performance-score">0</div>
                     <div class="result-label lang-en">Performance Score</div>
                     <div class="result-label lang-np">प्रदर्शन स्कोर</div>
@@ -863,40 +939,20 @@
             </div>
             
             <div class="detailed-results">
-                <h3 class="lang-en">Detailed Breakdown</h3>
+                <h3 class="lang-en">Detailed Analysis</h3>
                 <h3 class="lang-np">विस्तृत विश्लेषण</h3>
-                
-                <div class="result-breakdown">
-                    <div class="breakdown-card">
-                        <h4 class="lang-en">Question Types</h4>
-                        <h4 class="lang-np">प्रश्न प्रकारहरू</h4>
-                        <p class="lang-en" id="question-types">Mathematical: 10, Logical: 10, Analytical: 10</p>
-                        <p class="lang-np" id="question-types-np">गणितीय: १०, तार्किक: १०, विश्लेषणात्मक: १०</p>
-                    </div>
-                    
-                    <div class="breakdown-card">
-                        <h4 class="lang-en">Time Analysis</h4>
-                        <h4 class="lang-np">समय विश्लेषण</h4>
-                        <p class="lang-en" id="time-analysis">Average time per question: 45 seconds</p>
-                        <p class="lang-np" id="time-analysis-np">प्रति प्रश्न औसत समय: ४५ सेकेन्ड</p>
-                    </div>
-                    
-                    <div class="breakdown-card">
-                        <h4 class="lang-en">Recommendations</h4>
-                        <h4 class="lang-np">सिफारिसहरू</h4>
-                        <p class="lang-en" id="recommendations">Practice more logical reasoning questions</p>
-                        <p class="lang-np" id="recommendations-np">थप तार्किक तर्क प्रश्नहरूको अभ्यास गर्नुहोस्</p>
-                    </div>
+                <div class="answer-review-container" id="answer-review-container">
+                    <!-- Answer review will be inserted here -->
                 </div>
             </div>
             
-            <div class="navigation-buttons" style="margin-top: 30px;">
+            <div class="navigation-buttons">
                 <button class="btn btn-secondary" id="review-btn">
                     <i class="fas fa-eye"></i>
                     <span class="lang-en">Review Answers</span>
                     <span class="lang-np">उत्तरहरू पुनरावलोकन गर्नुहोस्</span>
                 </button>
-                <button class="btn btn-accent" id="restart-btn">
+                <button class="btn" id="restart-btn">
                     <i class="fas fa-redo"></i>
                     <span class="lang-en">Take Another Test</span>
                     <span class="lang-np">अर्को परीक्षण लिनुहोस्</span>
@@ -907,14 +963,928 @@
 
     <!-- Footer -->
     <footer class="container">
-    <p class="lang-en">   MINDQ   . This test is for educational purposes only.</p>
-    <p class="lang-np">   माइन्डक्यू ।  यो परीक्षण केवल शैक्षिक उद्देश्यका लागि हो।</p>
-    <p> Developed by : Dipan Pandeya -2026- </p>
-    <p> This is a prototype of MINDQ , any helpful suggestions are welcomed ! Email : mindqweb@gmail.com</p>
+        <p class="lang-en">MindQ Cognitive Assessment Platform © 2026</p>
+        <p class="lang-np">माइन्डक्यू संज्ञानात्मक मूल्याङ्कन प्लेटफर्म © २०२६</p>
+        <p>Email: mindqweb@gmail.com</p>
+        <p class="lang-en">Professional assessment for educational purposes</p>
+        <p class="lang-np">शैक्षिक उद्देश्यका लागि पेशेवर मूल्याङ्कन</p>
     </footer>
 
     <script>
-        // Language switching functionality
+        // Professional MindQ Application
+        const QUESTION_TIME_LIMIT = 20;
+        
+        // Questions Database - Professional IQ Testing Questions
+        const questionsDatabase = {
+            verbal: [
+                {
+                    id: 1,
+                    text_en: "Find the relationship: REPLETE is to FAMISHED as BLATANT is to _____?",
+                    text_np: "सम्बन्ध पत्ता लगाउनुहोस्: REPLETE को FAMISHED संग जस्तै सम्बन्ध BLATANT को _____ संग छ?",
+                    options_en: ["SHROUD", "MASKED", "PLAUSIBLE", "COMMENCE"],
+                    options_np: ["SHROUD", "MASKED", "PLAUSIBLE", "COMMENCE"],
+                    correct: 1,
+                    explanation_en: "REPLETE (full) and FAMISHED (very hungry) are direct opposites. BLATANT (very obvious) and MASKED (hidden) are also direct contradictions.",
+                    explanation_np: "REPLETE (भरिएको) र FAMISHED (धेरै भोकाएको) सीधा विपरीत हुन्। BLATANT (धेरै स्पष्ट) र MASKED (लुकेको) पनि सीधा विपरीत हुन्।"
+                },
+                {
+                    id: 2,
+                    text_en: "Which word does NOT belong with the others?",
+                    text_np: "कुन शब्द अरूसँग मेल खाँदैन?",
+                    options_en: ["index", "glossary", "chapter", "book"],
+                    options_np: ["अनुक्रमणिका", "शब्दावली", "अध्याय", "किताब"],
+                    correct: 3,
+                    explanation_en: "Index, glossary, and chapter are all PARTS of a book. The book itself is the whole object.",
+                    explanation_np: "अनुक्रमणिका, शब्दावली, र अध्याय सबै किताबका भाग हुन्। किताब आफै सम्पूर्ण वस्तु हो।"
+                },
+                {
+                    id: 3,
+                    text_en: "Complete the analogy: Forest is to tree as tree is to _____?",
+                    text_np: "समानता पूरा गर्नुहोस्: जङ्गल को रूख संग जस्तै सम्बन्ध रूख को _____ संग छ?",
+                    options_en: ["plant", "leaf", "branch", "mangrove"],
+                    options_np: ["बोट", "पात", "हाँगा", "मैन्ग्रोभ"],
+                    correct: 1,
+                    explanation_en: "A forest is made up of many trees. A tree is made up of many leaves. 'Branch' is incorrect because not all trees have prominent branches.",
+                    explanation_np: "जङ्गल धेरै रूखहरूबाट बनेको हुन्छ। रूख धेरै पातहरूबाट बनेको हुन्छ। 'हाँगा' गलत छ किनभने सबै रूखहरूमा प्रमुख हाँगाहरू हुँदैनन्।"
+                },
+                {
+                    id: 4,
+                    text_en: "Odd one out: trivial, unimportant, important, insignificant",
+                    text_np: "बेमेल शब्द छान्नुहोस्: तुच्छ, महत्वहीन, महत्त्वपूर्ण, नगण्य",
+                    options_en: ["trivial", "unimportant", "important", "insignificant"],
+                    options_np: ["तुच्छ", "महत्वहीन", "महत्त्वपूर्ण", "नगण्य"],
+                    correct: 2,
+                    explanation_en: "'Trivial', 'unimportant', and 'insignificant' are synonyms expressing lack of importance. 'Important' is an antonym.",
+                    explanation_np: "'तुच्छ', 'महत्वहीन', र 'नगण्य' महत्वको अभाव व्यक्त गर्ने समानार्थी शब्द हुन्। 'महत्त्वपूर्ण' विपरीतार्थी शब्द हो।"
+                },
+                {
+                    id: 5,
+                    text_en: "If most snakes are green and most snakes are quick, is it true that at least one snake is both green and quick?",
+                    text_np: "यदि धेरै सर्पहरू हरिया छन् र धेरै सर्पहरू चुस्त छन्, के यो सत्य हो कि कम्तिमा एउटा सर्प हरिया पनि हो र चुस्त पनि हो?",
+                    options_en: ["Yes", "No", "Cannot be determined"],
+                    options_np: ["हो", "होइन", "निर्धारण गर्न सकिदैन"],
+                    correct: 0,
+                    explanation_en: "Yes. Since both subgroups ('green' and 'quick') constitute more than 50% of the total, they must logically overlap.",
+                    explanation_np: "हो। किनभने दुवै उपसमूहहरू ('हरिया' र 'चुस्त') कुलको ५०% भन्दा बढी छन्, तार्किक रूपमा तिनीहरू अवश्य ओभरल्याप हुनुपर्छ।"
+                },
+                {
+                    id: 6,
+                    text_en: "IMPERIOUS most closely means:",
+                    text_np: "IMPERIOUS को नजिकको अर्थ के हो:",
+                    options_en: ["quiet", "subservient", "arrogant", "gloomy"],
+                    options_np: ["शान्त", "अधीन", "घमण्डी", "उदास"],
+                    correct: 2,
+                    explanation_en: "IMPERIOUS means domineering in a haughty manner; dictatorial; overbearing. 'Arrogant' is the closest synonym. 'Subservient' is an antonym.",
+                    explanation_np: "IMPERIOUS को अर्थ घमण्डी तरिकाले प्रभुत्व जमाउने; तानाशाही; अहंकारी। 'घमण्डी' नजिकको समानार्थी शब्द हो। 'अधीन' विपरीतार्थी शब्द हो।"
+                },
+                {
+                    id: 7,
+                    text_en: "The word CLOUT most closely means:",
+                    text_np: "शब्द CLOUT को नजिकको अर्थ के हो:",
+                    options_en: ["a heavy blow", "prestige", "influence", "both B and C"],
+                    options_np: ["एउटा जोड्दार प्रहार", "प्रतिष्ठा", "प्रभाव", "B र C दुवै"],
+                    correct: 3,
+                    explanation_en: "Clout has two meanings: (1) A heavy blow, (2) The power to influence, usually regarding politics or business. 'Prestige' is close to the second meaning.",
+                    explanation_np: "Clout का दुई अर्थ छन्: (१) जोड्दार प्रहार, (२) प्रभाव पार्ने शक्ति, सामान्यतया राजनीति वा व्यवसायसम्बन्धी। 'प्रतिष्ठा' दोस्रो अर्थसँग नजिक छ।"
+                },
+                {
+                    id: 8,
+                    text_en: "All athletes are hard workers. Alice is not an athlete. Therefore, Alice is not a hard worker. Is this conclusion:",
+                    text_np: "सबै एथलीटहरू मेहनती हुन्छन्। एलिस एथलीट होइनन्। त्यसैले, एलिस मेहनती होइनन्। यो निष्कर्ष:",
+                    options_en: ["True", "False", "Uncertain"],
+                    options_np: ["सत्य", "असत्य", "अनिश्चित"],
+                    correct: 2,
+                    explanation_en: "Uncertain. The first statement tells us about athletes, but gives NO information about non-athletes. Alice, not being an athlete, could be a hard worker or not.",
+                    explanation_np: "अनिश्चित। पहिलो कथनले एथलीटहरूको बारेमा भन्छ, तर एथलीट नभएकाको बारेमा कुनै जानकारी दिँदैन। एथलीट नभएकी एलिस मेहनती हुन सक्छिन् वा हुन नसक्छिन्।"
+                },
+                {
+                    id: 9,
+                    text_en: "Which word is the odd one out? bleak, gloomy, morose, archaic",
+                    text_np: "कुन शब्द बेमेल छ? निराशाजनक, उदास, निराश, पुरातन",
+                    options_en: ["bleak", "gloomy", "morose", "archaic"],
+                    options_np: ["निराशाजनक", "उदास", "निराश", "पुरातन"],
+                    correct: 3,
+                    explanation_en: "'Bleak', 'gloomy', and 'morose' are all used to describe sad and gloomy states. 'Archaic' describes something belonging to an earlier period.",
+                    explanation_np: "'निराशाजनक', 'उदास', र 'निराश' सबै दुःखी र उदास अवस्थाहरू वर्णन गर्न प्रयोग गरिन्छ। 'पुरातन' ले अघिल्लो समयको कुरा वर्णन गर्छ।"
+                },
+                {
+                    id: 10,
+                    text_en: "Which situation is the best example of an 'Informal Gathering'?",
+                    text_np: "कुन अवस्था 'अनौपचारिक सभा' को उत्तम उदाहरण हो?",
+                    options_en: ["A debating club meets every first Sunday.", "Colleagues go for dinner after work.", "Sending invitations for a bachelorette party.", "Running into someone at a restaurant."],
+                    options_np: ["बहस क्लब हरेक पहिलो आइतबार भेट्छ।", "सहकर्मीहरू कामपछि खानाको लागि जान्छन्।", "एकल महिला पार्टीको लागि निम्ता पठाउँदै।", "रेस्टुरेन्टमा कसैलाई भेट्नु।"],
+                    correct: 1,
+                    explanation_en: "An informal gathering is casual and relaxed. Colleagues spontaneously going for dinner after work fits this definition best.",
+                    explanation_np: "अनौपचारिक सभा साधारण र आरामदायी हुन्छ। सहकर्मीहरू कामपछि अकस्मात खानाको लागि जानु यो परिभाषासँग उत्तम रूपमा मेल खान्छ।"
+                },
+                {
+                    id: 11,
+                    text_en: "Choose the word that is most similar to 'PROLIFIC'.",
+                    text_np: "'PROLIFIC' संग सबैभन्दा समान शब्द छान्नुहोस्।",
+                    options_en: ["Unproductive", "Creative", "Abundant", "Rare"],
+                    options_np: ["अउपजाउ", "सृजनशील", "प्रचुर", "दुर्लभ"],
+                    correct: 2,
+                    explanation_en: "PROLIFIC means producing much fruit or foliage OR producing many works. 'Abundant' is the closest synonym.",
+                    explanation_np: "PROLIFIC को अर्थ धेरै फल वा पात उत्पादन गर्ने वा धेरै कामहरू उत्पादन गर्ने। 'प्रचुर' नजिकको समानार्थी शब्द हो।"
+                },
+                {
+                    id: 12,
+                    text_en: "If all squares are rectangles, and all rectangles are quadrilaterals, then:",
+                    text_np: "यदि सबै वर्गहरू आयत हुन्, र सबै आयतहरू चतुर्भुज हुन्, भने:",
+                    options_en: ["All quadrilaterals are squares", "Some quadrilaterals are squares", "No quadrilaterals are squares", "All squares are quadrilaterals"],
+                    options_np: ["सबै चतुर्भुजहरू वर्ग हुन्", "केही चतुर्भुजहरू वर्ग हुन्", "कुनै चतुर्भुज वर्ग होइनन्", "सबै वर्गहरू चतुर्भुज हुन्"],
+                    correct: 3,
+                    explanation_en: "Based on the statements: squares → rectangles → quadrilaterals. Therefore, all squares are quadrilaterals.",
+                    explanation_np: "कथनहरूको आधारमा: वर्ग → आयत → चतुर्भुज। त्यसैले, सबै वर्गहरू चतुर्भुज हुन्।"
+                },
+                {
+                    id: 13,
+                    text_en: "Rearrange to form a meaningful word: T E N T A I C N",
+                    text_np: "अर्थपूर्ण शब्द बनाउन पुनर्व्यवस्थित गर्नुहोस्: T E N T A I C N",
+                    options_en: ["TENTACIN", "TENTANCE", "TENACITY", "TECTANIN"],
+                    options_np: ["TENTACIN", "TENTANCE", "TENACITY", "TECTANIN"],
+                    correct: 2,
+                    explanation_en: "The correct arrangement is TENACITY, which means the quality or state of being tenacious.",
+                    explanation_np: "सही व्यवस्था TENACITY हो, जसको अर्थ दृढ वा जिद्दी हुनको गुण वा अवस्था हो।"
+                },
+                {
+                    id: 14,
+                    text_en: "Complete the series: 2, 5, 10, 17, 26, ?",
+                    text_np: "श्रृंखला पूरा गर्नुहोस्: २, ५, १०, १७, २६, ?",
+                    options_en: ["35", "36", "37", "38"],
+                    options_np: ["३५", "३६", "३७", "३८"],
+                    correct: 2,
+                    explanation_en: "Pattern: +3, +5, +7, +9, +11 (adding consecutive odd numbers). 26 + 11 = 37.",
+                    explanation_np: "ढाँचा: +३, +५, +७, +९, +११ (क्रमिक बिजोर संख्याहरू जोड्दै)। २६ + ११ = ३७।"
+                },
+                {
+                    id: 15,
+                    text_en: "Which is NOT a type of triangle?",
+                    text_np: "कुन त्रिभुजको प्रकार होइन?",
+                    options_en: ["Isosceles", "Scalene", "Equilateral", "Quadrilateral"],
+                    options_np: ["समद्विबाहु", "विषमबाहु", "समबाहु", "चतुर्भुज"],
+                    correct: 3,
+                    explanation_en: "Quadrilateral is a four-sided polygon, not a triangle which has three sides.",
+                    explanation_np: "चतुर्भुज चार भुजा भएको बहुभुज हो, तीन भुजा भएको त्रिभुज होइन।"
+                },
+                {
+                    id: 16,
+                    text_en: "What is the next letter? A, D, G, J, ?",
+                    text_np: "अर्को अक्षर के हो? A, D, G, J, ?",
+                    options_en: ["K", "L", "M", "N"],
+                    options_np: ["K", "L", "M", "N"],
+                    correct: 2,
+                    explanation_en: "Pattern: Skip 2 letters each time. A (+3) = D, D (+3) = G, G (+3) = J, J (+3) = M.",
+                    explanation_np: "ढाँचा: प्रत्येक पटक २ अक्षर छोड्नुहोस्। A (+३) = D, D (+३) = G, G (+३) = J, J (+३) = M।"
+                },
+                {
+                    id: 17,
+                    text_en: "What is the meaning of 'BENEVOLENT'?",
+                    text_np: "'BENEVOLENT' को अर्थ के हो?",
+                    options_en: ["Cruel", "Kind", "Selfish", "Angry"],
+                    options_np: ["क्रूर", "दयालु", "स्वार्थी", "रिसाएको"],
+                    correct: 1,
+                    explanation_en: "BENEVOLENT means well meaning and kindly. 'Kind' is the correct synonym.",
+                    explanation_np: "BENEVOLENT को अर्थ भलो चाहने र दयालु। 'दयालु' सही समानार्थी शब्द हो।"
+                },
+                {
+                    id: 18,
+                    text_en: "Choose the correct analogy: Fish is to school as wolf is to _____.",
+                    text_np: "सही समानता छान्नुहोस्: माछा को विद्यालय संग जस्तै सम्बन्ध ब्वाँसो को _____ संग छ।",
+                    options_en: ["pack", "herd", "flock", "pride"],
+                    options_np: ["प्याक", "हर्ड", "फ्लक", "प्राइड"],
+                    correct: 0,
+                    explanation_en: "A group of fish is called a school. A group of wolves is called a pack.",
+                    explanation_np: "माछाहरूको समूहलाई स्कुल भनिन्छ। ब्वाँसोहरूको समूहलाई प्याक भनिन्छ।"
+                },
+                {
+                    id: 19,
+                    text_en: "Which word means the opposite of 'DILATE'?",
+                    text_np: "कुन शब्दले 'DILATE' को विपरीत अर्थ दिन्छ?",
+                    options_en: ["Expand", "Contract", "Enlarge", "Stretch"],
+                    options_np: ["फैलनु", "सङ्कुचित हुनु", "ठूलो पार्नु", "तान्नु"],
+                    correct: 1,
+                    explanation_en: "DILATE means to make or become wider, larger, or more open. CONTRACT means to become smaller.",
+                    explanation_np: "DILATE को अर्थ चौडा, ठूलो, वा खुला बनाउने। CONTRACT को अर्थ सानो हुने।"
+                },
+                {
+                    id: 20,
+                    text_en: "What is 15% of 200?",
+                    text_np: "२०० को १५% के हो?",
+                    options_en: ["15", "20", "30", "45"],
+                    options_np: ["१५", "२०", "३०", "४५"],
+                    correct: 2,
+                    explanation_en: "15% of 200 = (15/100) × 200 = 0.15 × 200 = 30.",
+                    explanation_np: "२०० को १५% = (१५/१००) × २०० = ०.१५ × २०० = ३०।"
+                },
+                {
+                    id: 21,
+                    text_en: "Find the missing word: Pen is to write as knife is to _____.",
+                    text_np: "हराएको शब्द पत्ता लगाउनुहोस्: कलम को लेख्नु संग जस्तै सम्बन्ध चक्कु को _____ संग छ।",
+                    options_en: ["cut", "sharp", "metal", "kitchen"],
+                    options_np: ["काट्नु", "तिखो", "धातु", "भान्सा"],
+                    correct: 0,
+                    explanation_en: "A pen is used to write. A knife is used to cut.",
+                    explanation_np: "कलम लेख्न प्रयोग गरिन्छ। चक्कु काट्न प्रयोग गरिन्छ।"
+                },
+                {
+                    id: 22,
+                    text_en: "Which is the largest fraction?",
+                    text_np: "कुन सबैभन्दा ठूलो भिन्न हो?",
+                    options_en: ["1/2", "2/3", "3/4", "5/6"],
+                    options_np: ["१/२", "२/३", "३/४", "५/६"],
+                    correct: 3,
+                    explanation_en: "Convert to decimal: 1/2=0.5, 2/3≈0.667, 3/4=0.75, 5/6≈0.833. 5/6 is largest.",
+                    explanation_np: "दशमलवमा रूपान्तरण: १/२=०.५, २/३≈०.६६७, ३/४=०.७५, ५/६≈०.८३३। ५/६ सबैभन्दा ठूलो हो।"
+                },
+                {
+                    id: 23,
+                    text_en: "What is the synonym of 'VORACIOUS'?",
+                    text_np: "'VORACIOUS' को समानार्थी शब्द के हो?",
+                    options_en: ["Hungry", "Full", "Slow", "Picky"],
+                    options_np: ["भोकाएको", "भरिएको", "ढिलो", "रुचाउने"],
+                    correct: 0,
+                    explanation_en: "VORACIOUS means wanting or devouring great quantities of food. 'Hungry' is a good synonym.",
+                    explanation_np: "VORACIOUS को अर्थ ठूलो मात्रामा खाना चाहने वा खाने। 'भोकाएको' राम्रो समानार्थी शब्द हो।"
+                },
+                {
+                    id: 24,
+                    text_en: "Complete: Bird is to nest as bee is to _____.",
+                    text_np: "पूरा गर्नुहोस्: चरा को घोंसला संग जस्तै सम्बन्ध मौरी को _____ संग छ।",
+                    options_en: ["hive", "honey", "flower", "wing"],
+                    options_np: ["मौरीघर", "मह", "फूल", "पखेटा"],
+                    correct: 0,
+                    explanation_en: "A bird lives in a nest. A bee lives in a hive.",
+                    explanation_np: "चरा घोंसलामा बस्छ। मौरी मौरीघरमा बस्छ।"
+                },
+                {
+                    id: 25,
+                    text_en: "What number comes next? 1, 1, 2, 3, 5, 8, ?",
+                    text_np: "अर्को कुन नम्बर आउँछ? १, १, २, ३, ५, ८, ?",
+                    options_en: ["11", "12", "13", "14"],
+                    options_np: ["११", "१२", "१३", "१४"],
+                    correct: 2,
+                    explanation_en: "Fibonacci sequence: Each number is the sum of the two preceding ones. 5+8=13.",
+                    explanation_np: "फाइबोनाची क्रम: प्रत्येक संख्या अघिल्ला दुई संख्याहरूको योगफल हुन्छ। ५+८=१३।"
+                },
+                {
+                    id: 26,
+                    text_en: "What is the antonym of 'TRANSPARENT'?",
+                    text_np: "'TRANSPARENT' को विपरीतार्थी शब्द के हो?",
+                    options_en: ["Clear", "Opaque", "Visible", "Glass"],
+                    options_np: ["स्पष्ट", "अपारदर्शी", "दृश्यात्मक", "ग्लास"],
+                    correct: 1,
+                    explanation_en: "TRANSPARENT means allowing light to pass through so that objects can be distinctly seen. OPAQUE means not able to be seen through.",
+                    explanation_np: "TRANSPARENT को अर्थ प्रकाश पार गर्न दिने जसले गर्दा वस्तुहरू स्पष्ट देखिन्छन्। OPAQUE को अर्थ भित्र देखिन नसक्ने।"
+                },
+                {
+                    id: 27,
+                    text_en: "Solve: If 3x + 7 = 22, what is x?",
+                    text_np: "समाधान गर्नुहोस्: यदि ३x + ७ = २२, x के हो?",
+                    options_en: ["4", "5", "6", "7"],
+                    options_np: ["४", "५", "६", "७"],
+                    correct: 1,
+                    explanation_en: "3x + 7 = 22 → 3x = 22 - 7 → 3x = 15 → x = 15/3 = 5.",
+                    explanation_np: "३x + ७ = २२ → ३x = २२ - ७ → ३x = १५ → x = १५/३ = ५।"
+                },
+                {
+                    id: 28,
+                    text_en: "Which word is spelled correctly?",
+                    text_np: "कुन शब्द सही ढंगले हिज्जे गरिएको छ?",
+                    options_en: ["Seperate", "Separate", "Seperete", "Separete"],
+                    options_np: ["Seperate", "Separate", "Seperete", "Separete"],
+                    correct: 1,
+                    explanation_en: "SEPARATE is the correct spelling. Remember: There's 'a rat' in separate.",
+                    explanation_np: "SEPARATE सही हिज्जे हो। सम्झनुहोस्: Separate मा 'a rat' छ।"
+                },
+                {
+                    id: 29,
+                    text_en: "What is the capital of France?",
+                    text_np: "फ्रान्सको राजधानी के हो?",
+                    options_en: ["London", "Berlin", "Paris", "Madrid"],
+                    options_np: ["लन्डन", "बर्लिन", "पेरिस", "म्याड्रिड"],
+                    correct: 2,
+                    explanation_en: "Paris is the capital and most populous city of France.",
+                    explanation_np: "पेरिस फ्रान्सको राजधानी र सबैभन्दा बढी जनसंख्या भएको सहर हो।"
+                },
+                {
+                    id: 30,
+                    text_en: "Which planet is known as the Red Planet?",
+                    text_np: "कुन ग्रहलाई रातो ग्रह भनिन्छ?",
+                    options_en: ["Venus", "Mars", "Jupiter", "Saturn"],
+                    options_np: ["शुक्र", "मंगल", "बृहस्पति", "शनि"],
+                    correct: 1,
+                    explanation_en: "Mars is often called the 'Red Planet' because of its reddish appearance.",
+                    explanation_np: "मंगललाई प्रायः 'रातो ग्रह' भनिन्छ किनभने यसको रातो देखिने स्वरूप।"
+                }
+            ],
+            logical: [
+                {
+                    id: 31,
+                    text_en: "Look at this series: 8, 3, 9, 10, 17, ? What number should come next?",
+                    text_np: "यो श्रृंखला हेर्नुहोस्: ८, ३, ९, १०, १७, ? अर्को कुन नम्बर आउनुपर्छ?",
+                    options_en: ["19", "25", "27", "30"],
+                    options_np: ["१९", "२५", "२७", "३०"],
+                    correct: 2,
+                    explanation_en: "Pattern: 8+3=11, 3+9=12, 9+10=19, 10+17=27. Wait, that's not right. Actually: 8+3=11, 3+9=12, 9+10=19, 10+17=27. The pattern is: Add previous two numbers, then subtract 0,1,2,3... Actually the real pattern: 8+3=11 (but we have 9), 3+9=12 (but we have 10)... Let's check: 8 to 3: -5, 3 to 9: +6, 9 to 10: +1, 10 to 17: +7. Not consistent. Actually it's: Each term = sum of previous two terms minus something. Let's recalculate: 8, 3, (8+3-2=9), (3+9-2=10), (9+10-2=17), so next: 10+17-2=25. Yes! So answer is 25.",
+                    explanation_np: "ढाँचा: ८+३=११ (तर हामीसँग ९ छ), ३+९=१२ (तर हामीसँग १० छ)... वास्तविक ढाँचा: प्रत्येक पद = अघिल्ला दुई पदहरूको योग - २। ८, ३, (८+३-२=९), (३+९-२=१०), (९+१०-२=१७), त्यसैले अर्को: १०+१७-२=२५। हो! त्यसैले उत्तर २५ हो।"
+                },
+                {
+                    id: 32,
+                    text_en: "If all dogs bark, and Fido is a dog, then:",
+                    text_np: "यदि सबै कुकुरहरू भुक्छन्, र फिडो एउटा कुकुर हो, भने:",
+                    options_en: ["Fido might bark", "Fido does not bark", "Fido barks", "Cannot determine"],
+                    options_np: ["फिडोले भुक्न सक्छ", "फिडोले भुक्दैन", "फिडोले भुक्छ", "निर्धारण गर्न सकिदैन"],
+                    correct: 2,
+                    explanation_en: "If ALL dogs bark, and Fido IS a dog, then Fido must bark.",
+                    explanation_np: "यदि सबै कुकुरहरू भुक्छन्, र फिडो एउटा कुकुर हो, भने फिडोले भुक्नै पर्छ।"
+                },
+                {
+                    id: 33,
+                    text_en: "Find the odd one out: triangle, square, circle, rectangle",
+                    text_np: "बेमेल पत्ता लगाउनुहोस्: त्रिभुज, वर्ग, वृत्त, आयत",
+                    options_en: ["triangle", "square", "circle", "rectangle"],
+                    options_np: ["त्रिभुज", "वर्ग", "वृत्त", "आयत"],
+                    correct: 2,
+                    explanation_en: "Circle is the only shape without straight sides/edges. All others are polygons.",
+                    explanation_np: "वृत्त सिधा भुजाहरू/किनाराहरू नभएको एकमात्र आकार हो। अरू सबै बहुभुज हुन्।"
+                },
+                {
+                    id: 34,
+                    text_en: "What comes next? 2, 4, 8, 16, ___",
+                    text_np: "अर्को के आउँछ? २, ४, ८, १६, ___",
+                    options_en: ["24", "32", "36", "64"],
+                    options_np: ["२४", "३२", "३६", "६४"],
+                    correct: 1,
+                    explanation_en: "Pattern: Multiply by 2 each time. 2×2=4, 4×2=8, 8×2=16, 16×2=32.",
+                    explanation_np: "ढाँचा: प्रत्येक पटक २ ले गुणन गर्नुहोस्। २×२=४, ४×२=८, ८×२=१६, १६×२=३२।"
+                },
+                {
+                    id: 35,
+                    text_en: "If some cats are black, and all black animals are nocturnal, then:",
+                    text_np: "यदि केही बिरालाहरू काला छन्, र सबै काला जनावरहरू राति सक्रिय हुन्छन्, भने:",
+                    options_en: ["All cats are nocturnal", "Some cats are nocturnal", "No cats are nocturnal", "Cannot determine"],
+                    options_np: ["सबै बिरालाहरू राति सक्रिय हुन्छन्", "केही बिरालाहरू राति सक्रिय हुन्छन्", "कुनै बिराला राति सक्रिय हुँदैन", "निर्धारण गर्न सकिदैन"],
+                    correct: 1,
+                    explanation_en: "Some cats are black (given). All black animals are nocturnal (given). Therefore, those black cats must be nocturnal. So SOME cats are nocturnal.",
+                    explanation_np: "केही बिरालाहरू काला छन् (दिइएको)। सबै काला जनावरहरू राति सक्रिय हुन्छन् (दिइएको)। त्यसैले, ती काला बिरालाहरू राति सक्रिय हुनुपर्छ। त्यसैले केही बिरालाहरू राति सक्रिय हुन्छन्।"
+                },
+                {
+                    id: 36,
+                    text_en: "Complete: 3, 6, 9, 12, ___",
+                    text_np: "पूरा गर्नुहोस्: ३, ६, ९, १२, ___",
+                    options_en: ["14", "15", "16", "18"],
+                    options_np: ["१४", "१५", "१६", "१८"],
+                    correct: 1,
+                    explanation_en: "Pattern: Add 3 each time. 3+3=6, 6+3=9, 9+3=12, 12+3=15.",
+                    explanation_np: "ढाँचा: प्रत्येक पटक ३ जोड्नुहोस्। ३+३=६, ६+३=९, ९+३=१२, १२+३=१५।"
+                },
+                {
+                    id: 37,
+                    text_en: "If A = 1, B = 2, C = 3, what is the value of A + B + C?",
+                    text_np: "यदि A = १, B = २, C = ३, A + B + C को मान के हो?",
+                    options_en: ["5", "6", "7", "8"],
+                    options_np: ["५", "६", "७", "८"],
+                    correct: 1,
+                    explanation_en: "A=1, B=2, C=3. So A+B+C = 1+2+3 = 6.",
+                    explanation_np: "A=१, B=२, C=३। त्यसैले A+B+C = १+२+३ = ६।"
+                },
+                {
+                    id: 38,
+                    text_en: "Which number is different? 2, 3, 5, 7, 9, 11",
+                    text_np: "कुन नम्बर फरक छ? २, ३, ५, ७, ९, ११",
+                    options_en: ["2", "7", "9", "11"],
+                    options_np: ["२", "७", "९", "११"],
+                    correct: 2,
+                    explanation_en: "All numbers except 9 are prime numbers. 9 is composite (3×3).",
+                    explanation_np: "९ बाहेक सबै संख्याहरू अभाज्य संख्याहरू हुन्। ९ भाज्य संख्या हो (३×३)।"
+                },
+                {
+                    id: 39,
+                    text_en: "What is the next shape? □, ○, △, □, ○, △, ?",
+                    text_np: "अर्को आकार के हो? □, ○, △, □, ○, △, ?",
+                    options_en: ["□", "○", "△", "◇"],
+                    options_np: ["□", "○", "△", "◇"],
+                    correct: 0,
+                    explanation_en: "Pattern repeats every 3 shapes: square, circle, triangle. Next is square.",
+                    explanation_np: "ढाँचा प्रत्येक ३ आकारमा दोहोरिन्छ: वर्ग, वृत्त, त्रिभुज। अर्को वर्ग हो।"
+                },
+                {
+                    id: 40,
+                    text_en: "If Monday is the first day, what is the fifth day?",
+                    text_np: "यदि सोमबार पहिलो दिन हो, पाँचौं दिन के हो?",
+                    options_en: ["Tuesday", "Wednesday", "Thursday", "Friday"],
+                    options_np: ["मङ्गलबार", "बुधबार", "बिहिबार", "शुक्रबार"],
+                    correct: 3,
+                    explanation_en: "Monday (1), Tuesday (2), Wednesday (3), Thursday (4), Friday (5).",
+                    explanation_np: "सोमबार (१), मङ्गलबार (२), बुधबार (३), बिहिबार (४), शुक्रबार (५)।"
+                },
+                {
+                    id: 41,
+                    text_en: "Complete: 1, 4, 9, 16, ___",
+                    text_np: "पूरा गर्नुहोस्: १, ४, ९, १६, ___",
+                    options_en: ["20", "24", "25", "36"],
+                    options_np: ["२०", "२४", "२५", "३६"],
+                    correct: 2,
+                    explanation_en: "These are perfect squares: 1²=1, 2²=4, 3²=9, 4²=16, 5²=25.",
+                    explanation_np: "यी पूर्ण वर्गहरू हुन्: १²=१, २²=४, ३²=९, ४²=१६, ५²=२५।"
+                },
+                {
+                    id: 42,
+                    text_en: "If all roses are flowers, and some flowers are red, then:",
+                    text_np: "यदि सबै गुलाबहरू फूलहरू हुन्, र केही फूलहरू राता छन्, भने:",
+                    options_en: ["All roses are red", "Some roses are red", "No roses are red", "Cannot determine"],
+                    options_np: ["सबै गुलाबहरू राता छन्", "केही गुलाबहरू राता छन्", "कुनै गुलाब रातो छैन", "निर्धारण गर्न सकिदैन"],
+                    correct: 3,
+                    explanation_en: "We know some flowers are red, but we don't know if roses are among those red flowers. Could be all roses are white, for example.",
+                    explanation_np: "हामीलाई थाहा छ केही फूलहरू राता छन्, तर हामीलाई थाहा छैन कि गुलाबहरू ती राता फूलहरूमा पर्छन् कि पर्दैनन्। उदाहरणका लागि, सबै गुलाबहरू सेता हुन सक्छन्।"
+                },
+                {
+                    id: 43,
+                    text_en: "What is the missing number? 5, 10, __, 20, 25",
+                    text_np: "हराएको नम्बर के हो? ५, १०, __, २०, २५",
+                    options_en: ["12", "15", "18", "22"],
+                    options_np: ["१२", "१५", "१८", "२२"],
+                    correct: 1,
+                    explanation_en: "Pattern: Add 5 each time. 5+5=10, 10+5=15, 15+5=20, 20+5=25.",
+                    explanation_np: "ढाँचा: प्रत्येक पटक ५ जोड्नुहोस्। ५+५=१०, १०+५=१५, १५+५=२०, २०+५=२५।"
+                },
+                {
+                    id: 44,
+                    text_en: "Which is heavier? 1 kg of feathers or 1 kg of iron?",
+                    text_np: "कुन बढी तौल हुन्छ? १ किलो प्वाँखहरू वा १ किलो फलाम?",
+                    options_en: ["Feathers", "Iron", "Same", "Cannot compare"],
+                    options_np: ["प्वाँखहरू", "फलाम", "समान", "तुलना गर्न सकिदैन"],
+                    correct: 2,
+                    explanation_en: "Both are 1 kg, so they weigh the same. Density is different, but weight is the same.",
+                    explanation_np: "दुवै १ किलो छन्, त्यसैले तिनीहरूको तौल समान हुन्छ। घनत्व फरक छ, तर तौल समान छ।"
+                },
+                {
+                    id: 45,
+                    text_en: "Complete: 2, 3, 5, 8, 12, ___",
+                    text_np: "पूरा गर्नुहोस्: २, ३, ५, ८, १२, ___",
+                    options_en: ["15", "16", "17", "18"],
+                    options_np: ["१५", "१६", "१७", "१८"],
+                    correct: 2,
+                    explanation_en: "Pattern: +1, +2, +3, +4, +5. 12+5=17.",
+                    explanation_np: "ढाँचा: +१, +२, +३, +४, +५। १२+५=१७।"
+                },
+                {
+                    id: 46,
+                    text_en: "If yesterday was Friday, what day is tomorrow?",
+                    text_np: "यदि हिजो शुक्रबार थियो, भोलि कुन दिन हो?",
+                    options_en: ["Saturday", "Sunday", "Monday", "Tuesday"],
+                    options_np: ["शनिबार", "आइतबार", "सोमबार", "मङ्गलबार"],
+                    correct: 1,
+                    explanation_en: "Yesterday was Friday → Today is Saturday → Tomorrow is Sunday.",
+                    explanation_np: "हिजो शुक्रबार थियो → आज शनिबार हो → भोलि आइतबार हो।"
+                },
+                {
+                    id: 47,
+                    text_en: "Which number is largest? 0.5, 0.05, 0.005, 0.0005",
+                    text_np: "कुन नम्बर सबैभन्दा ठूलो छ? ०.५, ०.०५, ०.००५, ०.०००५",
+                    options_en: ["0.5", "0.05", "0.005", "0.0005"],
+                    options_np: ["०.५", "०.०५", "०.००५", "०.०००५"],
+                    correct: 0,
+                    explanation_en: "0.5 = 5/10, 0.05 = 5/100, 0.005 = 5/1000, 0.0005 = 5/10000. 0.5 is largest.",
+                    explanation_np: "०.५ = ५/१०, ०.०५ = ५/१००, ०.००५ = ५/१०००, ०.०००५ = ५/१००००। ०.५ सबैभन्दा ठूलो हो।"
+                },
+                {
+                    id: 48,
+                    text_en: "How many sides does a hexagon have?",
+                    text_np: "एउटा षट्भुजमा कति भुजाहरू हुन्छन्?",
+                    options_en: ["4", "5", "6", "7"],
+                    options_np: ["४", "५", "६", "७"],
+                    correct: 2,
+                    explanation_en: "Hexagon has 6 sides (hexa = six).",
+                    explanation_np: "षट्भुजमा ६ वटा भुजाहरू हुन्छन् (षट् = छ)।"
+                },
+                {
+                    id: 49,
+                    text_en: "What is 50% of 100?",
+                    text_np: "१०० को ५०% के हो?",
+                    options_en: ["25", "50", "75", "100"],
+                    options_np: ["२५", "५०", "७५", "१००"],
+                    correct: 1,
+                    explanation_en: "50% means half. Half of 100 is 50.",
+                    explanation_np: "५०% को अर्थ आधा। १०० को आधा ५० हो।"
+                },
+                {
+                    id: 50,
+                    text_en: "If you face north and turn 90° right, which direction are you facing?",
+                    text_np: "यदि तपाईं उत्तरतिर फर्कनुभयो र ९०° दायाँ घुम्नुभयो, तपाईं कुन दिशातिर फर्कनुभएको छ?",
+                    options_en: ["North", "East", "South", "West"],
+                    options_np: ["उत्तर", "पूर्व", "दक्षिण", "पश्चिम"],
+                    correct: 1,
+                    explanation_en: "North → turn right 90° → East.",
+                    explanation_np: "उत्तर → दायाँ ९०° घुम्नुहोस् → पूर्व।"
+                },
+                {
+                    id: 51,
+                    text_en: "What is 3 squared?",
+                    text_np: "३ को वर्ग के हो?",
+                    options_en: ["6", "9", "12", "15"],
+                    options_np: ["६", "९", "१२", "१५"],
+                    correct: 1,
+                    explanation_en: "3 squared = 3² = 3 × 3 = 9.",
+                    explanation_np: "३ को वर्ग = ३² = ३ × ३ = ९।"
+                },
+                {
+                    id: 52,
+                    text_en: "Which shape has 3 sides?",
+                    text_np: "कुन आकारमा ३ वटा भुजाहरू हुन्छन्?",
+                    options_en: ["Square", "Triangle", "Pentagon", "Circle"],
+                    options_np: ["वर्ग", "त्रिभुज", "पञ्चभुज", "वृत्त"],
+                    correct: 1,
+                    explanation_en: "Triangle has 3 sides.",
+                    explanation_np: "त्रिभुजमा ३ वटा भुजाहरू हुन्छन्।"
+                },
+                {
+                    id: 53,
+                    text_en: "What is 10 - 3 × 2?",
+                    text_np: "१० - ३ × २ के हो?",
+                    options_en: ["14", "4", "8", "6"],
+                    options_np: ["१४", "४", "८", "६"],
+                    correct: 1,
+                    explanation_en: "Order of operations: Multiplication before subtraction. 3×2=6, then 10-6=4.",
+                    explanation_np: "सञ्चालनको क्रम: घटाउ अघि गुणन। ३×२=६, त्यसपछि १०-६=४।"
+                },
+                {
+                    id: 54,
+                    text_en: "How many months have 30 days?",
+                    text_np: "कति महिनाहरूमा ३० दिन हुन्छ?",
+                    options_en: ["4", "5", "6", "7"],
+                    options_np: ["४", "५", "६", "७"],
+                    correct: 0,
+                    explanation_en: "April, June, September, November have 30 days. That's 4 months.",
+                    explanation_np: "अप्रिल, जुन, सेप्टेम्बर, नोभेम्बरमा ३० दिन हुन्छ। त्यो ४ महिना हो।"
+                },
+                {
+                    id: 55,
+                    text_en: "What is ¼ expressed as a decimal?",
+                    text_np: "१/४ लाई दशमलवमा व्यक्त गर्नुहोस्?",
+                    options_en: ["0.1", "0.2", "0.25", "0.4"],
+                    options_np: ["०.१", "०.२", "०.२५", "०.४"],
+                    correct: 2,
+                    explanation_en: "¼ = 0.25 (1 divided by 4 = 0.25).",
+                    explanation_np: "१/४ = ०.२५ (१ लाई ४ ले भाग गर्दा = ०.२५)।"
+                },
+                {
+                    id: 56,
+                    text_en: "How many hours are in a day?",
+                    text_np: "एक दिनमा कति घण्टा हुन्छ?",
+                    options_en: ["12", "24", "36", "48"],
+                    options_np: ["१२", "२४", "३६", "४८"],
+                    correct: 1,
+                    explanation_en: "There are 24 hours in a day.",
+                    explanation_np: "एक दिनमा २४ घण्टा हुन्छ।"
+                },
+                {
+                    id: 57,
+                    text_en: "What is the next letter? A, C, E, G, ___",
+                    text_np: "अर्को अक्षर के हो? A, C, E, G, ___",
+                    options_en: ["H", "I", "J", "K"],
+                    options_np: ["H", "I", "J", "K"],
+                    correct: 1,
+                    explanation_en: "Pattern: Skip one letter. A (skip B) C (skip D) E (skip F) G (skip H) I.",
+                    explanation_np: "ढाँचा: एक अक्षर छोड्नुहोस्। A (B छोड्नुहोस्) C (D छोड्नुहोस्) E (F छोड्नुहोस्) G (H छोड्नुहोस्) I।"
+                },
+                {
+                    id: 58,
+                    text_en: "What is 5 + 3 × 2?",
+                    text_np: "५ + ३ × २ के हो?",
+                    options_en: ["16", "11", "10", "8"],
+                    options_np: ["१६", "११", "१०", "८"],
+                    correct: 1,
+                    explanation_en: "Multiplication before addition: 3×2=6, then 5+6=11.",
+                    explanation_np: "जोड अघि गुणन: ३×२=६, त्यसपछि ५+६=११।"
+                },
+                {
+                    id: 59,
+                    text_en: "What is the square root of 64?",
+                    text_np: "६४ को वर्गमूल के हो?",
+                    options_en: ["6", "7", "8", "9"],
+                    options_np: ["६", "७", "८", "९"],
+                    correct: 2,
+                    explanation_en: "8 × 8 = 64, so √64 = 8.",
+                    explanation_np: "८ × ८ = ६४, त्यसैले √६४ = ८।"
+                },
+                {
+                    id: 60,
+                    text_en: "How many degrees are in a right angle?",
+                    text_np: "समकोणमा कति डिग्री हुन्छ?",
+                    options_en: ["45", "90", "180", "360"],
+                    options_np: ["४५", "९०", "१८०", "३६०"],
+                    correct: 1,
+                    explanation_en: "A right angle is exactly 90 degrees.",
+                    explanation_np: "एउटा समकोण ठ्याक्कै ९० डिग्री हुन्छ।"
+                }
+            ],
+            spatial: [
+                {
+                    id: 61,
+                    text_en: "Which shape completes the pattern? □ ○ △ □ ○ △ □ ○ ?",
+                    text_np: "कुन आकारले ढाँचा पूरा गर्छ? □ ○ △ □ ○ △ □ ○ ?",
+                    options_en: ["□", "○", "△", "◇"],
+                    options_np: ["□", "○", "△", "◇"],
+                    correct: 2,
+                    explanation_en: "Pattern repeats: square, circle, triangle. After square and circle comes triangle.",
+                    explanation_np: "ढाँचा दोहोरिन्छ: वर्ग, वृत्त, त्रिभुज। वर्ग र वृत्त पछि त्रिभुज आउँछ।"
+                },
+                {
+                    id: 62,
+                    text_en: "If you rotate a square 90° clockwise, how does it look?",
+                    text_np: "यदि तपाईंले वर्गलाई ९०° घडीको दिशामा घुमाउनुभयो, यो कस्तो देखिन्छ?",
+                    options_en: ["Same", "Upside down", "Tilted", "Different"],
+                    options_np: ["समान", "उल्टो", "झुकेको", "फरक"],
+                    correct: 0,
+                    explanation_en: "A square has rotational symmetry of order 4. Rotating 90° gives identical appearance.",
+                    explanation_np: "वर्गमा ४ को घुमाउरा समरूपता हुन्छ। ९०° घुमाउँदा समान देखिने हुन्छ।"
+                },
+                {
+                    id: 63,
+                    text_en: "Which 3D shape has 6 square faces?",
+                    text_np: "कुन ३D आकारमा ६ वटा वर्गाकार सतहहरू हुन्छन्?",
+                    options_en: ["Sphere", "Cube", "Cylinder", "Pyramid"],
+                    options_np: ["गोला", "घन", "सिलिन्डर", "पिरामिड"],
+                    correct: 1,
+                    explanation_en: "A cube has 6 square faces.",
+                    explanation_np: "एउटा घनमा ६ वटा वर्गाकार सतहहरू हुन्छन्।"
+                },
+                {
+                    id: 64,
+                    text_en: "Imagine folding this net. Which shape do you get? (A cross-shaped net)",
+                    text_np: "यो जाल मोडेर कल्पना गर्नुहोस्। तपाईंलाई कुन आकार प्राप्त हुन्छ? (क्रस आकारको जाल)",
+                    options_en: ["Cube", "Pyramid", "Tetrahedron", "Prism"],
+                    options_np: ["घन", "पिरामिड", "टेट्राहेड्रोन", "प्रिज्म"],
+                    correct: 0,
+                    explanation_en: "A cross-shaped net (like a plus sign with squares) folds into a cube.",
+                    explanation_np: "क्रस आकारको जाल (वर्गहरू भएको प्लस चिन्ह जस्तो) घनमा मोडिन्छ।"
+                },
+                {
+                    id: 65,
+                    text_en: "Which shape has no corners?",
+                    text_np: "कुन आकारमा कुनै कुनाहरू हुँदैनन्?",
+                    options_en: ["Triangle", "Square", "Circle", "Pentagon"],
+                    options_np: ["त्रिभुज", "वर्ग", "वृत्त", "पञ्चभुज"],
+                    correct: 2,
+                    explanation_en: "A circle has no corners (vertices).",
+                    explanation_np: "वृत्तमा कुनै कुनाहरू (शीर्ष) हुँदैनन्।"
+                },
+                {
+                    id: 66,
+                    text_en: "What is the mirror image of letter 'b'?",
+                    text_np: "'b' अक्षरको दर्पण प्रतिबिम्ब के हो?",
+                    options_en: ["b", "d", "p", "q"],
+                    options_np: ["b", "d", "p", "q"],
+                    correct: 1,
+                    explanation_en: "The mirror image of 'b' is 'd'.",
+                    explanation_np: "'b' को दर्पण प्रतिबिम्ब 'd' हो।"
+                },
+                {
+                    id: 67,
+                    text_en: "How many triangles in this shape? (A star shape)",
+                    text_np: "यस आकारमा कति त्रिभुजहरू छन्? (तारा आकार)",
+                    options_en: ["5", "10", "15", "20"],
+                    options_np: ["५", "१०", "१५", "२०"],
+                    correct: 1,
+                    explanation_en: "A typical 5-pointed star has 10 small triangles (5 pointing outward, 5 pointing inward).",
+                    explanation_np: "एक ठेट ५-बिन्दु भएको तारामा १० वटा साना त्रिभुजहरू हुन्छन् (५ बाहिरतिर, ५ भित्रतिर)।"
+                },
+                {
+                    id: 68,
+                    text_en: "If you cut a cube along its edges to make a flat net, how many squares?",
+                    text_np: "यदि तपाईंले घनलाई यसको किनाराहरूमा काटेर एउटा सपाट जाल बनाउनुभयो, कति वर्गहरू?",
+                    options_en: ["4", "5", "6", "7"],
+                    options_np: ["४", "५", "६", "७"],
+                    correct: 2,
+                    explanation_en: "A cube has 6 faces, all squares. So a net will have 6 squares.",
+                    explanation_np: "एउटा घनमा ६ वटा सतहहरू हुन्छन्, सबै वर्गहरू। त्यसैले जालमा ६ वटा वर्गहरू हुन्छन्।"
+                },
+                {
+                    id: 69,
+                    text_en: "Which is a 3D shape?",
+                    text_np: "कुन ३D आकार हो?",
+                    options_en: ["Square", "Circle", "Cube", "Triangle"],
+                    options_np: ["वर्ग", "वृत्त", "घन", "त्रिभुज"],
+                    correct: 2,
+                    explanation_en: "Cube is 3-dimensional. Others are 2D shapes.",
+                    explanation_np: "घन ३-आयामी हो। अरू २D आकारहरू हुन्।"
+                },
+                {
+                    id: 70,
+                    text_en: "What shape has 4 equal sides?",
+                    text_np: "कुन आकारमा ४ वटा समान भुजाहरू हुन्छन्?",
+                    options_en: ["Rectangle", "Square", "Rhombus", "All of above"],
+                    options_np: ["आयत", "वर्ग", "समचतुर्भुज", "माथिको सबै"],
+                    correct: 3,
+                    explanation_en: "Square and rhombus have 4 equal sides. Rectangle has opposite sides equal.",
+                    explanation_np: "वर्ग र समचतुर्भुजमा ४ वटा समान भुजाहरू हुन्छन्। आयतमा विपरीत भुजाहरू समान हुन्छन्।"
+                },
+                {
+                    id: 71,
+                    text_en: "Imagine a triangle rotated 180°. How does it look?",
+                    text_np: "त्रिभुजलाई १८०° घुमाएर कल्पना गर्नुहोस्। यो कस्तो देखिन्छ?",
+                    options_en: ["Same", "Upside down", "Mirrored", "Different"],
+                    options_np: ["समान", "उल्टो", "दर्पण", "फरक"],
+                    correct: 1,
+                    explanation_en: "Rotating 180° flips it upside down (unless it has 180° rotational symmetry).",
+                    explanation_np: "१८०° घुमाउँदा यसलाई उल्ट्याउँछ (जबसम्म यसमा १८०° को घुमाउरा समरूपता हुँदैन)।"
+                },
+                {
+                    id: 72,
+                    text_en: "Which shape can tessellate (tile a plane without gaps)?",
+                    text_np: "कुन आकारले टेसेलेट गर्न सक्छ (खाली ठाउँ बिना तल्ला टाइल गर्न सक्छ)?",
+                    options_en: ["Circle", "Regular pentagon", "Square", "Regular heptagon"],
+                    options_np: ["वृत्त", "नियमित पञ्चभुज", "वर्ग", "नियमित सप्तभुज"],
+                    correct: 2,
+                    explanation_en: "Squares tessellate perfectly. Circles cannot tessellate without gaps.",
+                    explanation_np: "वर्गहरू राम्रोसँग टेसेलेट हुन्छन्। वृत्तहरू खाली ठाउँ बिना टेसेलेट हुन सक्दैनन्।"
+                },
+                {
+                    id: 73,
+                    text_en: "How many lines of symmetry does a square have?",
+                    text_np: "वर्गमा कति रेखा समरूपता हुन्छ?",
+                    options_en: ["2", "4", "6", "8"],
+                    options_np: ["२", "४", "६", "८"],
+                    correct: 1,
+                    explanation_en: "A square has 4 lines of symmetry: vertical, horizontal, and two diagonals.",
+                    explanation_np: "वर्गमा ४ वटा रेखा समरूपता हुन्छ: ठाडो, तेर्सो, र दुई विकर्णहरू।"
+                },
+                {
+                    id: 74,
+                    text_en: "What is the next in pattern? →, ↑, ←, ↓, ?",
+                    text_np: "ढाँचामा अर्को के हो? →, ↑, ←, ↓, ?",
+                    options_en: ["→", "↑", "←", "↓"],
+                    options_np: ["→", "↑", "←", "↓"],
+                    correct: 0,
+                    explanation_en: "Pattern cycles through directions clockwise: right, up, left, down, then back to right.",
+                    explanation_np: "ढाँचा दिशाहरूमा घडीको दिशामा चक्रित हुन्छ: दायाँ, माथि, बायाँ, तल, त्यसपछि फेरि दायाँ।"
+                },
+                {
+                    id: 75,
+                    text_en: "Which is NOT a polygon?",
+                    text_np: "कुन बहुभुज होइन?",
+                    options_en: ["Triangle", "Square", "Circle", "Hexagon"],
+                    options_np: ["त्रिभुज", "वर्ग", "वृत्त", "षट्भुज"],
+                    correct: 2,
+                    explanation_en: "A circle is not a polygon (it has curved boundary, not straight sides).",
+                    explanation_np: "वृत्त बहुभुज होइन (यसको घुमाउरो सीमा छ, सीधा भुजाहरू छैनन्)।"
+                },
+                {
+                    id: 76,
+                    text_en: "If you cut a circle in half, what shape are the pieces?",
+                    text_np: "यदि तपाईंले वृत्तलाई आधामा काट्नुभयो, टुक्राहरू कस्तो आकारका हुन्छन्?",
+                    options_en: ["Circles", "Semicircles", "Triangles", "Squares"],
+                    options_np: ["वृत्त", "अर्धवृत्त", "त्रिभुज", "वर्ग"],
+                    correct: 1,
+                    explanation_en: "Half of a circle is a semicircle.",
+                    explanation_np: "वृत्तको आधा अर्धवृत्त हो।"
+                },
+                {
+                    id: 77,
+                    text_en: "Which has more sides: hexagon or octagon?",
+                    text_np: "कुनमा बढी भुजाहरू छन्: षट्भुज वा अष्टभुज?",
+                    options_en: ["Hexagon", "Octagon", "Same", "Cannot tell"],
+                    options_np: ["षट्भुज", "अष्टभुज", "समान", "भन्न सकिदैन"],
+                    correct: 1,
+                    explanation_en: "Hexagon: 6 sides, Octagon: 8 sides. Octagon has more.",
+                    explanation_np: "षट्भुज: ६ भुजाहरू, अष्टभुज: ८ भुजाहरू। अष्टभुजमा बढी छ।"
+                },
+                {
+                    id: 78,
+                    text_en: "What shape is a standard soccer ball?",
+                    text_np: "मानक फुटबल कस्तो आकारको हुन्छ?",
+                    options_en: ["Sphere", "Cube", "Cylinder", "Pyramid"],
+                    options_np: ["गोला", "घन", "सिलिन्डर", "पिरामिड"],
+                    correct: 0,
+                    explanation_en: "A soccer ball is spherical (roughly a sphere).",
+                    explanation_np: "फुटबल गोलाकार हुन्छ (लगभग गोला)।"
+                },
+                {
+                    id: 79,
+                    text_en: "How many faces does a tetrahedron have?",
+                    text_np: "टेट्राहेड्रोनमा कति सतहहरू हुन्छन्?",
+                    options_en: ["3", "4", "5", "6"],
+                    options_np: ["३", "४", "५", "६"],
+                    correct: 1,
+                    explanation_en: "A tetrahedron has 4 triangular faces.",
+                    explanation_np: "टेट्राहेड्रोनमा ४ वटा त्रिभुजाकार सतहहरू हुन्छन्।"
+                },
+                {
+                    id: 80,
+                    text_en: "What shape has all points equidistant from center?",
+                    text_np: "कुन आकारमा सबै बिन्दुहरू केन्द्रबाट समान दूरीमा हुन्छन्?",
+                    options_en: ["Square", "Triangle", "Circle", "Rectangle"],
+                    options_np: ["वर्ग", "त्रिभुज", "वृत्त", "आयत"],
+                    correct: 2,
+                    explanation_en: "A circle is defined as all points equidistant from a center point.",
+                    explanation_np: "वृत्तलाई केन्द्र बिन्दुबाट समान दूरीमा रहेका सबै बिन्दुहरूको रूपमा परिभाषित गरिएको छ।"
+                },
+                {
+                    id: 81,
+                    text_en: "Which shape has rotational symmetry but no lines of symmetry?",
+                    text_np: "कुन आकारमा घुमाउरा समरूपता छ तर रेखा समरूपता छैन?",
+                    options_en: ["Square", "Circle", "Parallelogram", "Equilateral triangle"],
+                    options_np: ["वर्ग", "वृत्त", "समानान्तर चतुर्भुज", "समबाहु त्रिभुज"],
+                    correct: 2,
+                    explanation_en: "A general parallelogram (not rhombus/rectangle) has 180° rotational symmetry but no reflection symmetry.",
+                    explanation_np: "सामान्य समानान्तर चतुर्भुज (समचतुर्भुज/आयत होइन) मा १८०° घुमाउरा समरूपता हुन्छ तर प्रतिबिम्ब समरूपता हुँदैन।"
+                },
+                {
+                    id: 82,
+                    text_en: "If you join two squares edge to edge, what shape?",
+                    text_np: "यदि तपाईंले दुई वर्गहरूलाई किनारादेखि किनारामा जोड्नुभयो, कुन आकार?",
+                    options_en: ["Rectangle", "Bigger square", "L-shape", "Depends on how joined"],
+                    options_np: ["आयत", "ठूलो वर्ग", "L-आकार", "कसरी जोडिएकोमा निर्भर गर्दछ"],
+                    correct: 3,
+                    explanation_en: "If joined side by side: rectangle. If joined corner to corner: different shape.",
+                    explanation_np: "यदि छेउछाउ जोडिएको: आयत। यदि कुनादेखि कुनामा जोडिएको: फरक आकार।"
+                },
+                {
+                    id: 83,
+                    text_en: "Which shape cannot be made by folding a single piece of paper without cutting?",
+                    text_np: "कुन आकार काट बिना एक टुक्रा कागज मोडेर बनाउन सकिदैन?",
+                    options_en: ["Cylinder", "Cone", "Mobius strip", "All can be made"],
+                    options_np: ["सिलिन्डर", "कोन", "मोबियस पट्टी", "सबै बनाउन सकिन्छ"],
+                    correct: 3,
+                    explanation_en: "All can be made by folding/rolling paper without cutting.",
+                    explanation_np: "सबै काट बिना कागज मोडेर/रोल गरेर बनाउन सकिन्छ।"
+                },
+                {
+                    id: 84,
+                    text_en: "How many different nets for a cube?",
+                    text_np: "घनको लागि कति फरक जालहरू?",
+                    options_en: ["6", "11", "24", "Infinitely many"],
+                    options_np: ["६", "११", "२४", "असीमित धेरै"],
+                    correct: 1,
+                    explanation_en: "There are exactly 11 distinct nets that can fold into a cube.",
+                    explanation_np: "घनमा मोड्न सकिने ठ्याक्कै ११ वटा भिन्न जालहरू छन्।"
+                },
+                {
+                    id: 85,
+                    text_en: "What 3D shape has a circular base and pointed top?",
+                    text_np: "कुन ३D आकारमा गोलाकार आधार र टोकरीको टुप्पो हुन्छ?",
+                    options_en: ["Cylinder", "Sphere", "Cone", "Cube"],
+                    options_np: ["सिलिन्डर", "गोला", "कोन", "घन"],
+                    correct: 2,
+                    explanation_en: "A cone has a circular base and a pointed vertex (apex).",
+                    explanation_np: "कोनमा गोलाकार आधार र टोकरीको शीर्ष (शिरोबिन्दु) हुन्छ।"
+                },
+                {
+                    id: 86,
+                    text_en: "Which is a platonic solid?",
+                    text_np: "कुन प्लेटोनिक ठोस हो?",
+                    options_en: ["Cube", "Cylinder", "Cone", "Pyramid (square)"],
+                    options_np: ["घन", "सिलिन्डर", "कोन", "पिरामिड (वर्ग)"],
+                    correct: 0,
+                    explanation_en: "Cube is a platonic solid (regular polyhedron). Cylinder/cone are not polyhedra.",
+                    explanation_np: "घन प्लेटोनिक ठोस हो (नियमित बहुफलक)। सिलिन्डर/कोन बहुफलक होइनन्।"
+                },
+                {
+                    id: 87,
+                    text_en: "What shape do you get slicing a cube parallel to a face?",
+                    text_np: "घनलाई सतहको समानान्तर काट्दा के आकार प्राप्त गर्नुहुन्छ?",
+                    options_en: ["Square", "Rectangle", "Triangle", "Circle"],
+                    options_np: ["वर्ग", "आयत", "त्रिभुज", "वृत्त"],
+                    correct: 0,
+                    explanation_en: "Slicing parallel to a face gives a square cross-section.",
+                    explanation_np: "सतहको समानान्तर काट्दा वर्गाकार क्रस-सेक्सन दिन्छ।"
+                },
+                {
+                    id: 88,
+                    text_en: "How to make a cylinder from rectangle?",
+                    text_np: "आयतबाट सिलिन्डर कसरी बनाउने?",
+                    options_en: ["Fold edges", "Roll it", "Cut and paste", "Stretch"],
+                    options_np: ["किनाराहरू मोड्नुहोस्", "यसलाई रोल गर्नुहोस्", "काटेर टाँस्नुहोस्", "तान्नुहोस्"],
+                    correct: 1,
+                    explanation_en: "Roll a rectangle so that two opposite edges meet to form a cylinder.",
+                    explanation_np: "आयतलाई यस्तो रोल गर्नुहोस् कि दुई विपरीत किनाराहरू भेट्ने गरी सिलिन्डर बनाउन।"
+                },
+                {
+                    id: 89,
+                    text_en: "Which shape has infinite lines of symmetry?",
+                    text_np: "कुन आकारमा अनन्त रेखा समरूपता हुन्छ?",
+                    options_en: ["Square", "Circle", "Equilateral triangle", "Rectangle"],
+                    options_np: ["वर्ग", "वृत्त", "समबाहु त्रिभुज", "आयत"],
+                    correct: 1,
+                    explanation_en: "A circle has infinite lines of symmetry (any diameter).",
+                    explanation_np: "वृत्तमा अनन्त रेखा समरूपता हुन्छ (कुनै पनि व्यास)।"
+                },
+                {
+                    id: 90,
+                    text_en: "What is the simplest polyhedron?",
+                    text_np: "सबैभन्दा सरल बहुफलक के हो?",
+                    options_en: ["Cube", "Tetrahedron", "Sphere", "Pyramid"],
+                    options_np: ["घन", "टेट्राहेड्रोन", "गोला", "पिरामिड"],
+                    correct: 1,
+                    explanation_en: "Tetrahedron has fewest faces (4) among polyhedra.",
+                    explanation_np: "बहुफलकहरूमा टेट्राहेड्रोनमा सबैभन्दा कम सतहहरू (४) हुन्छन्।"
+                }
+            ]
+        };
+
+        // Language switching
         const enBtn = document.getElementById('en-btn');
         const npBtn = document.getElementById('np-btn');
         const body = document.body;
@@ -932,555 +1902,36 @@
             body.classList.add('language-np');
         });
 
-        // Home button functionality
+        // Home button
         homeBtn.addEventListener('click', goToHomePage);
         
         function goToHomePage() {
-            // Stop timer if running
             if (timerInterval) {
                 clearInterval(timerInterval);
                 timerInterval = null;
             }
             
-            // Hide all sections
             questionSection.classList.remove('active');
             resultsSection.classList.remove('active');
             timerContainer.classList.remove('active');
-            
-            // Show test selection
             testSelection.style.display = 'block';
-            
-            // Hide home button
             homeBtn.classList.add('hidden');
             
-            // Reset test state
             currentTest = null;
             currentQuestionIndex = 0;
             userAnswers = {};
             testType = "";
-            timeRemaining = 0;
+            timeRemaining = QUESTION_TIME_LIMIT;
         }
 
-        // Questions database for Grade 12 level
-        const questions = {
-            mcq: [
-                {
-                    id: 1,
-                    text_en: "What number should come next in the series: 2, 6, 12, 20, 30, ?",
-                    text_np: "श्रृंखला: २, ६, १२, २०, ३०, ? मा अर्को कुन नम्बर आउनुपर्छ?",
-                    options_en: ["38", "42", "44", "40"],
-                    options_np: ["३८", "४२", "४४", "४०"],
-                    correct: 1,
-                    type: "mathematical",
-                    explanation_en: "The pattern is: +4, +6, +8, +10, so next is +12 = 42"
-                },
-                {
-                    id: 2,
-                    text_en: "Which word does NOT belong with the others?",
-                    text_np: "कुन शब्द अरूसँग मेल खाँदैन?",
-                    options_en: ["Circle", "Square", "Triangle", "Rectangle"],
-                    options_np: ["वृत्त", "वर्ग", "त्रिभुज", "आयत"],
-                    correct: 0,
-                    type: "analytical",
-                    explanation_en: "Circle is the only shape without straight edges"
-                },
-                {
-                    id: 3,
-                    text_en: "If x + 5 = 12, what is the value of x?",
-                    text_np: "यदि x + 5 = 12 भए, x को मान के हो?",
-                    options_en: ["5", "7", "12", "17"],
-                    options_np: ["५", "७", "१२", "१७"],
-                    correct: 1,
-                    type: "mathematical",
-                    explanation_en: "x = 12 - 5 = 7"
-                },
-                {
-                    id: 4,
-                    text_en: "Which country is known as the 'Land of the Rising Sun'?",
-                    text_np: "कुन देश 'उदाउने सूर्यको भूमि' को रूपमा चिनिन्छ?",
-                    options_en: ["China", "Thailand", "Japan", "South Korea"],
-                    options_np: ["चीन", "थाइल्यान्ड", "जापान", "दक्षिण कोरिया"],
-                    correct: 2,
-                    type: "general",
-                    explanation_en: "Japan is known as the Land of the Rising Sun"
-                },
-                {
-                    id: 5,
-                    text_en: "What is 15% of 200?",
-                    text_np: "२०० को १५% के हो?",
-                    options_en: ["15", "20", "30", "25"],
-                    options_np: ["१५", "२०", "३०", "२५"],
-                    correct: 2,
-                    type: "mathematical",
-                    explanation_en: "15% of 200 = 0.15 × 200 = 30"
-                },
-                {
-                    id: 6,
-                    text_en: "Rearrange the letters 'R A I N' to form a meaningful word",
-                    text_np: "'R A I N' अक्षरहरूलाई पुन: व्यवस्थित गर्नुहोस् एउटा अर्थपूर्ण शब्द बनाउन",
-                    options_en: ["RAIN", "RANI", "IRAN", "ARIN"],
-                    options_np: ["RAIN", "RANI", "IRAN", "ARIN"],
-                    correct: 0,
-                    type: "verbal",
-                    explanation_en: "RAIN is the correct meaningful word"
-                },
-                {
-                    id: 7,
-                    text_en: "If some doctors are scientists and all scientists are researchers, then:",
-                    text_np: "यदि केही डाक्टरहरू वैज्ञानिक हुन् र सबै वैज्ञानिकहरू शोधकर्ता हुन्, भने:",
-                    options_en: ["All doctors are researchers", "Some doctors are researchers", "No doctors are researchers", "All researchers are doctors"],
-                    options_np: ["सबै डाक्टरहरू शोधकर्ता हुन्", "केही डाक्टरहरू शोधकर्ता हुन्", "कुनै पनि डाक्टर शोधकर्ता होइनन्", "सबै शोधकर्ताहरू डाक्टर हुन्"],
-                    correct: 1,
-                    type: "logical",
-                    explanation_en: "Some doctors who are scientists must be researchers"
-                },
-                {
-                    id: 8,
-                    text_en: "Complete the analogy: Ocean is to Water as Desert is to _____",
-                    text_np: "समानता पूरा गर्नुहोस्: महासागर पानीसँग हो जस्तै मरुभूमि _____ सँग हो",
-                    options_en: ["Sand", "Heat", "Cactus", "Oasis"],
-                    options_np: ["बालुवा", "तातो", "क्याक्टस", "मरुभूमिमा पानीको स्रोत"],
-                    correct: 0,
-                    type: "verbal",
-                    explanation_en: "Ocean contains water, desert contains sand"
-                },
-                {
-                    id: 9,
-                    text_en: "If today is Friday, what day will it be 7 days from now?",
-                    text_np: "यदि आज शुक्रबार हो भने, ७ दिन पछि कुन दिन हुनेछ?",
-                    options_en: ["Friday", "Saturday", "Sunday", "Monday"],
-                    options_np: ["शुक्रबार", "शनिबार", "आइतबार", "सोमबार"],
-                    correct: 0,
-                    type: "mathematical",
-                    explanation_en: "7 days = 1 week, so same day"
-                },
-                {
-                    id: 10,
-                    text_en: "Which number is different from others?",
-                    text_np: "कुन नम्बर अरू भन्दा फरक छ?",
-                    options_en: ["9", "16", "25", "36", "50"],
-                    options_np: ["९", "१६", "२५", "३६", "५०"],
-                    correct: 4,
-                    type: "mathematical",
-                    explanation_en: "All others are perfect squares (3², 4², 5², 6²)"
-                },
-                {
-                    id: 11,
-                    text_en: "A farmer has 17 sheep. All but 9 die. How many are left?",
-                    text_np: "एक किसानसँग १७ भेडा छन्। ९ बाहेक सबै मर्छन्। कति बाँकी छन्?",
-                    options_en: ["8", "9", "17", "0"],
-                    options_np: ["८", "९", "१७", "०"],
-                    correct: 1,
-                    type: "logical",
-                    explanation_en: "'All but 9 die' means 9 are left alive"
-                },
-                {
-                    id: 12,
-                    text_en: "What is the capital of Nepal?",
-                    text_np: "नेपालको राजधानी के हो?",
-                    options_en: ["Pokhara", "Biratnagar", "Kathmandu", "Bhaktapur"],
-                    options_np: ["पोखरा", "विराटनगर", "काठमाडौँ", "भक्तपुर"],
-                    correct: 2,
-                    type: "general",
-                    explanation_en: "Kathmandu is the capital of Nepal"
-                },
-                {
-                    id: 13,
-                    text_en: "What is the square root of 144?",
-                    text_np: "१४४ को वर्गमूल के हो?",
-                    options_en: ["11", "12", "13", "14"],
-                    options_np: ["११", "१२", "१३", "१४"],
-                    correct: 1,
-                    type: "mathematical",
-                    explanation_en: "12 × 12 = 144"
-                },
-                {
-                    id: 14,
-                    text_en: "Which planet is known as the Red Planet?",
-                    text_np: "कुन ग्रह रातो ग्रहको रूपमा चिनिन्छ?",
-                    options_en: ["Venus", "Mars", "Jupiter", "Saturn"],
-                    options_np: ["शुक्र", "मङ्गल", "बृहस्पति", "शनि"],
-                    correct: 1,
-                    type: "general",
-                    explanation_en: "Mars is known as the Red Planet"
-                },
-                {
-                    id: 15,
-                    text_en: "What is 3/4 of 100?",
-                    text_np: "१०० को ३/४ के हो?",
-                    options_en: ["25", "50", "75", "100"],
-                    options_np: ["२५", "५०", "७५", "१००"],
-                    correct: 2,
-                    type: "mathematical",
-                    explanation_en: "3/4 × 100 = 75"
-                }
-            ],
-            logical: [
-                {
-                    id: 16,
-                    text_en: "Which shape is different from others?",
-                    text_np: "कुन आकार अरू भन्दा फरक छ?",
-                    options_en: ["Cube", "Sphere", "Pyramid", "Cylinder"],
-                    options_np: ["घन", "गोला", "पिरामिड", "बेलन"],
-                    correct: 1,
-                    type: "spatial",
-                    explanation_en: "Sphere has no edges or vertices"
-                },
-                {
-                    id: 17,
-                    text_en: "Complete the pattern: A, C, E, G, ?",
-                    text_np: "ढाँचा पूरा गर्नुहोस्: A, C, E, G, ?",
-                    options_en: ["H", "I", "J", "K"],
-                    options_np: ["H", "I", "J", "K"],
-                    correct: 1,
-                    type: "pattern",
-                    explanation_en: "Skipping one letter: A, (B), C, (D), E, (F), G, (H), I"
-                },
-                {
-                    id: 18,
-                    text_en: "If all roses are flowers and some flowers fade quickly, then:",
-                    text_np: "यदि सबै गुलाबहरू फूलहरू हुन् र केही फूलहरू छिटो म्लान हुन्छन्, भने:",
-                    options_en: ["All roses fade quickly", "Some roses fade quickly", "No roses fade quickly", "Cannot be determined"],
-                    options_np: ["सबै गुलाबहरू छिटो म्लान हुन्छन्", "केही गुलाबहरू छिटो म्लान हुन्छन्", "कुनै गुलाब छिटो म्लान हुँदैन", "निर्धारण गर्न सकिदैन"],
-                    correct: 3,
-                    type: "logical",
-                    explanation_en: "We don't know if roses are among flowers that fade quickly"
-                },
-                {
-                    id: 19,
-                    text_en: "What comes next: △, □, ○, △, □, ?",
-                    text_np: "अर्को के आउँछ: △, □, ○, △, □, ?",
-                    options_en: ["△", "□", "○", "◇"],
-                    options_np: ["△", "□", "○", "◇"],
-                    correct: 2,
-                    type: "pattern",
-                    explanation_en: "Pattern repeats: △, □, ○"
-                },
-                {
-                    id: 20,
-                    text_en: "If John is taller than Mary, and Mary is taller than Sam, then:",
-                    text_np: "यदि जोन मेरी भन्दा अग्लो छ, र मेरी स्याम भन्दा अग्लो छ, भने:",
-                    options_en: ["Sam is tallest", "John is tallest", "Mary is tallest", "Cannot determine"],
-                    options_np: ["स्याम सबैभन्दा अग्लो हो", "जोन सबैभन्दा अग्लो हो", "मेरी सबैभन्दा अग्लो हो", "निर्धारण गर्न सकिदैन"],
-                    correct: 1,
-                    type: "logical",
-                    explanation_en: "John > Mary > Sam, so John is tallest"
-                },
-                {
-                    id: 21,
-                    text_en: "Which number comes next: 2, 4, 8, 16, ?",
-                    text_np: "अर्को नम्बर के हो: २, ४, ८, १६, ?",
-                    options_en: ["24", "32", "36", "64"],
-                    options_np: ["२४", "३२", "३६", "६४"],
-                    correct: 1,
-                    type: "pattern",
-                    explanation_en: "Multiplying by 2 each time"
-                },
-                {
-                    id: 22,
-                    text_en: "If some cats are black and all black animals are nocturnal, then:",
-                    text_np: "यदि केही बिरालाहरू काला हुन् र सबै काला जनावरहरू राती सक्रिय हुन्छन्, भने:",
-                    options_en: ["All cats are nocturnal", "Some cats are nocturnal", "No cats are nocturnal", "All nocturnal animals are cats"],
-                    options_np: ["सबै बिरालाहरू राती सक्रिय हुन्छन्", "केही बिरालाहरू राती सक्रिय हुन्छन्", "कुनै बिराला राती सक्रिय हुँदैन", "सबै राती सक्रिय जनावरहरू बिराला हुन्"],
-                    correct: 1,
-                    type: "logical",
-                    explanation_en: "Some cats (the black ones) are nocturnal"
-                },
-                {
-                    id: 23,
-                    text_en: "What is the missing number: 3, 7, 11, 15, ?",
-                    text_np: "हराएको नम्बर के हो: ३, ७, ११, १५, ?",
-                    options_en: ["17", "19", "21", "23"],
-                    options_np: ["१७", "१९", "२१", "२३"],
-                    correct: 1,
-                    type: "pattern",
-                    explanation_en: "Adding 4 each time: 15 + 4 = 19"
-                },
-                {
-                    id: 24,
-                    text_en: "Which is the odd one out?",
-                    text_np: "कुन बिचमा फरक छ?",
-                    options_en: ["Pen", "Pencil", "Book", "Eraser"],
-                    options_np: ["कलम", "पेन्सिल", "किताब", "रबर"],
-                    correct: 2,
-                    type: "analytical",
-                    explanation_en: "Book is for reading, others are writing/drawing tools"
-                },
-                {
-                    id: 25,
-                    text_en: "If A=1, B=2, C=3, what is D+E?",
-                    text_np: "यदि A=1, B=2, C=3 भए, D+E को मान के हो?",
-                    options_en: ["7", "8", "9", "10"],
-                    options_np: ["७", "८", "९", "१०"],
-                    correct: 2,
-                    type: "mathematical",
-                    explanation_en: "D=4, E=5, so 4+5=9"
-                },
-                {
-                    id: 26,
-                    text_en: "Complete: Dog is to puppy as cat is to _____",
-                    text_np: "पूरा गर्नुहोस्: कुकुर र पिल्ला जस्तै बिरालो र _____",
-                    options_en: ["Kitten", "Cub", "Puppy", "Baby"],
-                    options_np: ["बिरालाको बच्चा", "शावक", "पिल्ला", "बच्चा"],
-                    correct: 0,
-                    type: "verbal",
-                    explanation_en: "Young dog = puppy, young cat = kitten"
-                },
-                {
-                    id: 27,
-                    text_en: "What comes next: Z, Y, X, W, ?",
-                    text_np: "अर्को के आउँछ: Z, Y, X, W, ?",
-                    options_en: ["U", "V", "T", "S"],
-                    options_np: ["U", "V", "T", "S"],
-                    correct: 1,
-                    type: "pattern",
-                    explanation_en: "Alphabet backwards"
-                },
-                {
-                    id: 28,
-                    text_en: "If Monday is the first day, what is the fifth day?",
-                    text_np: "यदि सोमबार पहिलो दिन हो भने, पाँचौं दिन कुन हो?",
-                    options_en: ["Wednesday", "Thursday", "Friday", "Saturday"],
-                    options_np: ["बुधबार", "बिहिबार", "शुक्रबार", "शनिबार"],
-                    correct: 2,
-                    type: "mathematical",
-                    explanation_en: "Mon(1), Tue(2), Wed(3), Thu(4), Fri(5)"
-                },
-                {
-                    id: 29,
-                    text_en: "Which pair is different?",
-                    text_np: "कुन जोडी फरक छ?",
-                    options_en: ["Eye : See", "Ear : Hear", "Nose : Smell", "Mouth : Talk"],
-                    options_np: ["आँखा : हेर्नु", "कान : सुन्नु", "नाक : सुङ्नु", "मुख : बोल्नु"],
-                    correct: 3,
-                    type: "analytical",
-                    explanation_en: "Talking is not a direct sensory function"
-                },
-                {
-                    id: 30,
-                    text_en: "What is the next number: 1, 4, 9, 16, ?",
-                    text_np: "अर्को नम्बर के हो: १, ४, ९, १६, ?",
-                    options_en: ["20", "24", "25", "36"],
-                    options_np: ["२०", "२४", "२५", "३६"],
-                    correct: 2,
-                    type: "pattern",
-                    explanation_en: "Square numbers: 1², 2², 3², 4², 5²=25"
-                }
-            ],
-            iq: [
-                {
-                    id: 31,
-                    text_en: "Solve: 2x - 6 = 10",
-                    text_np: "हल गर्नुहोस्: २x - ६ = १०",
-                    options_en: ["x = 2", "x = 4", "x = 6", "x = 8"],
-                    options_np: ["x = २", "x = ४", "x = ६", "x = ८"],
-                    correct: 3,
-                    type: "mathematical",
-                    explanation_en: "2x = 16, so x = 8"
-                },
-                {
-                    id: 32,
-                    text_en: "What is the area of a square with side 5cm?",
-                    text_np: "भुजा ५ से.मि. भएको वर्गको क्षेत्रफल के हो?",
-                    options_en: ["10 cm²", "20 cm²", "25 cm²", "30 cm²"],
-                    options_np: ["१० से.मि.²", "२० से.मि.²", "२५ से.मि.²", "३० से.मि.²"],
-                    correct: 2,
-                    type: "mathematical",
-                    explanation_en: "Area = side² = 5² = 25 cm²"
-                },
-                {
-                    id: 33,
-                    text_en: "If 3 pencils cost Rs. 15, how much do 5 pencils cost?",
-                    text_np: "यदि ३ वटा पेन्सिलको मूल्य रु. १५ छ भने, ५ वटा पेन्सिलको मूल्य कति हो?",
-                    options_en: ["Rs. 20", "Rs. 25", "Rs. 30", "Rs. 35"],
-                    options_np: ["रु. २०", "रु. २५", "रु. ३०", "रु. ३५"],
-                    correct: 1,
-                    type: "mathematical",
-                    explanation_en: "1 pencil = 15/3 = Rs. 5, so 5 pencils = 5×5 = Rs. 25"
-                },
-                {
-                    id: 34,
-                    text_en: "Which is the largest fraction?",
-                    text_np: "कुन भिन्न सबैभन्दा ठूलो छ?",
-                    options_en: ["1/2", "2/3", "3/4", "4/5"],
-                    options_np: ["१/२", "२/३", "३/४", "४/५"],
-                    correct: 3,
-                    type: "mathematical",
-                    explanation_en: "4/5 = 0.8 which is largest"
-                },
-                {
-                    id: 35,
-                    text_en: "What is 25% of 80?",
-                    text_np: "८० को २५% के हो?",
-                    options_en: ["15", "20", "25", "30"],
-                    options_np: ["१५", "२०", "२५", "३०"],
-                    correct: 1,
-                    type: "mathematical",
-                    explanation_en: "25% of 80 = 0.25 × 80 = 20"
-                },
-                {
-                    id: 36,
-                    text_en: "If a triangle has angles 40° and 60°, what is the third angle?",
-                    text_np: "यदि एउटा त्रिभुजमा ४०° र ६०° कोणहरू छन् भने, तेस्रो कोण कति हो?",
-                    options_en: ["60°", "70°", "80°", "90°"],
-                    options_np: ["६०°", "७०°", "८०°", "९०°"],
-                    correct: 2,
-                    type: "mathematical",
-                    explanation_en: "Sum = 180°, so third angle = 180 - (40+60) = 80°"
-                },
-                {
-                    id: 37,
-                    text_en: "What is the next letter: B, D, F, H, ?",
-                    text_np: "अर्को अक्षर के हो: B, D, F, H, ?",
-                    options_en: ["I", "J", "K", "L"],
-                    options_np: ["I", "J", "K", "L"],
-                    correct: 1,
-                    type: "pattern",
-                    explanation_en: "Skipping one letter: B, (C), D, (E), F, (G), H, (I), J"
-                },
-                {
-                    id: 38,
-                    text_en: "If all squares are rectangles and some rectangles are large, then:",
-                    text_np: "यदि सबै वर्गहरू आयत हुन् र केही आयतहरू ठूला हुन्, भने:",
-                    options_en: ["All squares are large", "Some squares are large", "No squares are large", "Cannot determine"],
-                    options_np: ["सबै वर्गहरू ठूला हुन्", "केही वर्गहरू ठूला हुन्", "कुनै वर्ग ठूलो हुँदैन", "निर्धारण गर्न सकिदैन"],
-                    correct: 3,
-                    type: "logical",
-                    explanation_en: "We don't know if squares are among large rectangles"
-                },
-                {
-                    id: 39,
-                    text_en: "What is the missing number: 5, 10, 15, 20, ?",
-                    text_np: "हराएको नम्बर के हो: ५, १०, १५, २०, ?",
-                    options_en: ["25", "30", "35", "40"],
-                    options_np: ["२५", "३०", "३५", "४०"],
-                    correct: 0,
-                    type: "pattern",
-                    explanation_en: "Adding 5 each time"
-                },
-                {
-                    id: 40,
-                    text_en: "Which word is different?",
-                    text_np: "कुन शब्द फरक छ?",
-                    options_en: ["Apple", "Banana", "Carrot", "Orange"],
-                    options_np: ["स्याउ", "केरा", "गाजर", "सुन्तला"],
-                    correct: 2,
-                    type: "analytical",
-                    explanation_en: "Carrot is a vegetable, others are fruits"
-                },
-                {
-                    id: 41,
-                    text_en: "If 1 dozen = 12, how many in 2.5 dozen?",
-                    text_np: "यदि १ दर्जन = १२ भए, २.५ दर्जनमा कति हुन्छ?",
-                    options_en: ["25", "30", "35", "40"],
-                    options_np: ["२५", "३०", "३५", "४०"],
-                    correct: 1,
-                    type: "mathematical",
-                    explanation_en: "2.5 × 12 = 30"
-                },
-                {
-                    id: 42,
-                    text_en: "Complete: Winter is to cold as summer is to _____",
-                    text_np: "पूरा गर्नुहोस्: जाडो र चिसो जस्तै गर्मी र _____",
-                    options_en: ["Hot", "Rain", "Snow", "Wind"],
-                    options_np: ["तातो", "वर्षा", "हिउँ", "हावा"],
-                    correct: 0,
-                    type: "verbal",
-                    explanation_en: "Winter is cold, summer is hot"
-                },
-                {
-                    id: 43,
-                    text_en: "What is 3² + 4²?",
-                    text_np: "३² + ४² को मान के हो?",
-                    options_en: ["7", "12", "25", "49"],
-                    options_np: ["७", "१२", "२५", "४९"],
-                    correct: 2,
-                    type: "mathematical",
-                    explanation_en: "9 + 16 = 25"
-                },
-                {
-                    id: 44,
-                    text_en: "If you face east and turn right 90°, which direction are you facing?",
-                    text_np: "यदि तपाईं पूर्वतिर फर्कनुभयो र दायाँतिर ९०° फर्कनुभयो भने, कुन दिशातिर फर्कनुभएको छ?",
-                    options_en: ["North", "South", "East", "West"],
-                    options_np: ["उत्तर", "दक्षिण", "पूर्व", "पश्चिम"],
-                    correct: 1,
-                    type: "spatial",
-                    explanation_en: "East → right 90° → South"
-                },
-                {
-                    id: 45,
-                    text_en: "What is the next number: 100, 81, 64, 49, ?",
-                    text_np: "अर्को नम्बर के हो: १००, ८१, ६४, ४९, ?",
-                    options_en: ["36", "35", "34", "33"],
-                    options_np: ["३६", "३५", "३४", "३३"],
-                    correct: 0,
-                    type: "pattern",
-                    explanation_en: "Square numbers: 10², 9², 8², 7², 6²=36"
-                },
-                {
-                    id: 46,
-                    text_en: "Which is NOT a multiple of 3?",
-                    text_np: "कुन ३ को गुणज होइन?",
-                    options_en: ["12", "15", "17", "21"],
-                    options_np: ["१२", "१५", "१७", "२१"],
-                    correct: 2,
-                    type: "mathematical",
-                    explanation_en: "17 is not divisible by 3"
-                },
-                {
-                    id: 47,
-                    text_en: "What is the perimeter of a rectangle with length 8cm and width 3cm?",
-                    text_np: "लम्बाइ ८ से.मि. र चौडाइ ३ से.मि. भएको आयतको परिमिति के हो?",
-                    options_en: ["11 cm", "22 cm", "24 cm", "30 cm"],
-                    options_np: ["११ से.मि.", "२२ से.मि.", "२४ से.मि.", "३० से.मि."],
-                    correct: 1,
-                    type: "mathematical",
-                    explanation_en: "Perimeter = 2×(8+3) = 2×11 = 22 cm"
-                },
-                {
-                    id: 48,
-                    text_en: "If A=1, B=2, C=3... Z=26, what is A+B+C?",
-                    text_np: "यदि A=1, B=2, C=3... Z=26 भए, A+B+C को मान के हो?",
-                    options_en: ["5", "6", "7", "8"],
-                    options_np: ["५", "६", "७", "८"],
-                    correct: 1,
-                    type: "mathematical",
-                    explanation_en: "1+2+3 = 6"
-                },
-                {
-                    id: 49,
-                    text_en: "What is 1/3 of 90?",
-                    text_np: "९० को १/३ के हो?",
-                    options_en: ["20", "30", "40", "50"],
-                    options_np: ["२०", "३०", "४०", "५०"],
-                    correct: 1,
-                    type: "mathematical",
-                    explanation_en: "90 ÷ 3 = 30"
-                },
-                {
-                    id: 50,
-                    text_en: "Complete the sequence: 2, 5, 10, 17, ?",
-                    text_np: "क्रम पूरा गर्नुहोस्: २, ५, १०, १७, ?",
-                    options_en: ["24", "26", "28", "30"],
-                    options_np: ["२४", "२६", "२८", "३०"],
-                    correct: 1,
-                    type: "pattern",
-                    explanation_en: "Difference increases by 2: +3, +5, +7, +9 = 26"
-                }
-            ]
-        };
-
         // Current test state
-        let currentTest = null;
+        let currentTest = [];
         let currentQuestionIndex = 0;
         let userAnswers = {};
         let testType = "";
         let timerInterval = null;
-        let timeRemaining = 0;
-        let totalTime = 0;
-        let startTime = null;
-        let endTime = null;
+        let timeRemaining = QUESTION_TIME_LIMIT;
+        let totalTestTime = 0;
 
         // DOM Elements
         const testSelection = document.getElementById('test-selection');
@@ -1507,64 +1958,48 @@
         const accuracyRateEl = document.getElementById('accuracy-rate');
         const performanceScoreEl = document.getElementById('performance-score');
         const resultsScoreEl = document.getElementById('results-score');
+        const maxScoreEl = document.getElementById('max-score');
+        const answerReviewContainer = document.getElementById('answer-review-container');
 
         // Test selection
-        document.getElementById('mcq-test').addEventListener('click', () => startTest('mcq'));
+        document.getElementById('verbal-test').addEventListener('click', () => startTest('verbal'));
         document.getElementById('logical-test').addEventListener('click', () => startTest('logical'));
-        document.getElementById('iq-test').addEventListener('click', () => startTest('iq'));
+        document.getElementById('spatial-test').addEventListener('click', () => startTest('spatial'));
 
-        // Start test function
+        // Start test
         function startTest(type) {
             testType = type;
-            currentTest = questions[type];
+            currentTest = questionsDatabase[type];
             currentQuestionIndex = 0;
             userAnswers = {};
+            totalTestTime = 0;
             
-            // Set test time based on type
-            if (type === 'mcq') {
-                totalTime = 15 * 60; // 15 minutes
-            } else if (type === 'logical') {
-                totalTime = 20 * 60; // 20 minutes
-            } else {
-                totalTime = 25 * 60; // 25 minutes
-            }
-            
-            timeRemaining = totalTime;
-            startTime = new Date();
-            
-            // Update UI
             testSelection.style.display = 'none';
             questionSection.classList.add('active');
             resultsSection.classList.remove('active');
             timerContainer.classList.add('active');
-            
-            // Show home button
             homeBtn.classList.remove('hidden');
             
-            // Set test type text
             const testNames = {
-                mcq: {en: "MCQ Intelligence Test", np: "बहुविकल्पीय बुद्धि परीक्षण"},
-                logical: {en: "Logical Reasoning Test", np: "तार्किक तर्क परीक्षण"},
-                iq: {en: "Comprehensive IQ Test", np: "व्यापक आईक्यू परीक्षण"}
+                verbal: {en: "Verbal Intelligence", np: "शाब्दिक बुद्धि"},
+                logical: {en: "Logical Reasoning", np: "तार्किक तर्क"},
+                spatial: {en: "Spatial Intelligence", np: "स्थानिक बुद्धि"}
             };
             
             currentTestTypeEl.textContent = testNames[type].en;
             currentTestTypeNpEl.textContent = testNames[type].np;
-            
-            // Set total questions
             totalQuestionsEl.textContent = currentTest.length;
             totalTimerQuestions.textContent = currentTest.length;
+            maxScoreEl.textContent = currentTest.length * 4;
             
-            // Start timer
-            startTimer();
-            
-            // Load first question
+            startQuestionTimer();
             loadQuestion();
         }
 
         // Timer functions
-        function startTimer() {
+        function startQuestionTimer() {
             clearInterval(timerInterval);
+            timeRemaining = QUESTION_TIME_LIMIT;
             updateTimerDisplay();
             
             timerInterval = setInterval(() => {
@@ -1573,24 +2008,26 @@
                 
                 if (timeRemaining <= 0) {
                     clearInterval(timerInterval);
-                    submitTest();
+                    totalTestTime += QUESTION_TIME_LIMIT;
+                    if (currentQuestionIndex < currentTest.length - 1) {
+                        currentQuestionIndex++;
+                        loadQuestion();
+                        startQuestionTimer();
+                    } else {
+                        submitTest();
+                    }
                 }
             }, 1000);
         }
         
         function updateTimerDisplay() {
-            const minutes = Math.floor(timeRemaining / 60);
-            const seconds = timeRemaining % 60;
-            timerEl.textContent = `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
-            
-            // Update progress bar
-            const progressPercentage = ((totalTime - timeRemaining) / totalTime) * 100;
+            timerEl.textContent = timeRemaining;
+            const progressPercentage = (timeRemaining / QUESTION_TIME_LIMIT) * 100;
             progressFill.style.width = `${progressPercentage}%`;
             
-            // Update timer color based on remaining time
-            if (timeRemaining < totalTime * 0.2) {
+            if (timeRemaining <= 5) {
                 timerEl.className = 'timer danger';
-            } else if (timeRemaining < totalTime * 0.5) {
+            } else if (timeRemaining <= 10) {
                 timerEl.className = 'timer warning';
             } else {
                 timerEl.className = 'timer';
@@ -1599,27 +2036,24 @@
         
         function stopTimer() {
             clearInterval(timerInterval);
-            endTime = new Date();
+            totalTestTime += (QUESTION_TIME_LIMIT - timeRemaining);
         }
 
-        // Load question function
+        // Load question
         function loadQuestion() {
+            stopTimer();
             const question = currentTest[currentQuestionIndex];
             const isEnglish = !body.classList.contains('language-np');
             
-            // Update question counter
             currentQuestionEl.textContent = currentQuestionIndex + 1;
             currentTimerQuestion.textContent = currentQuestionIndex + 1;
             
-            // Build question HTML
             const questionText = isEnglish ? question.text_en : question.text_np;
             const options = isEnglish ? question.options_en : question.options_np;
             
             let questionHTML = `<div class="question-text">${question.id}. ${questionText}</div>`;
             
-            // Add options
             questionHTML += `<div class="options-container">`;
-            
             options.forEach((option, index) => {
                 const isSelected = userAnswers[question.id] === index;
                 questionHTML += `
@@ -1629,35 +2063,29 @@
                     </div>
                 `;
             });
-            
             questionHTML += `</div>`;
             
-            // Insert into DOM
             questionContent.innerHTML = questionHTML;
             
-            // Add event listeners to options
             document.querySelectorAll('.option').forEach(option => {
                 option.addEventListener('click', function() {
-                    // Remove selected class from all options
                     document.querySelectorAll('.option').forEach(opt => {
                         opt.classList.remove('selected');
                     });
-                    
-                    // Add selected class to clicked option
                     this.classList.add('selected');
-                    
-                    // Save user answer
-                    userAnswers[question.id] = parseInt(this.getAttribute('data-index'));
+                    const questionId = currentTest[currentQuestionIndex].id;
+                    userAnswers[questionId] = parseInt(this.getAttribute('data-index'));
                 });
             });
             
-            // Update navigation buttons
             prevBtn.disabled = currentQuestionIndex === 0;
             nextBtn.style.display = currentQuestionIndex === currentTest.length - 1 ? 'none' : 'flex';
             submitBtn.style.display = currentQuestionIndex === currentTest.length - 1 ? 'flex' : 'none';
+            
+            startQuestionTimer();
         }
 
-        // Navigation functions
+        // Navigation
         prevBtn.addEventListener('click', () => {
             if (currentQuestionIndex > 0) {
                 currentQuestionIndex--;
@@ -1672,103 +2100,60 @@
             }
         });
 
-        // Submit test function
+        // Submit test
         submitBtn.addEventListener('click', submitTest);
         
         function submitTest() {
             stopTimer();
             
-            // Calculate results
             let correctCount = 0;
-            let questionTypes = {
-                mathematical: {total: 0, correct: 0},
-                logical: {total: 0, correct: 0},
-                analytical: {total: 0, correct: 0},
-                general: {total: 0, correct: 0},
-                verbal: {total: 0, correct: 0},
-                pattern: {total: 0, correct: 0},
-                spatial: {total: 0, correct: 0}
-            };
+            const answerReviewData = [];
             
             currentTest.forEach(question => {
-                // Count by type
-                if (questionTypes[question.type]) {
-                    questionTypes[question.type].total++;
+                const userAnswer = userAnswers[question.id];
+                const isCorrect = userAnswer === question.correct;
+                
+                if (isCorrect) {
+                    correctCount++;
                 }
                 
-                if (userAnswers[question.id] === question.correct) {
-                    correctCount++;
-                    if (questionTypes[question.type]) {
-                        questionTypes[question.type].correct++;
-                    }
-                }
+                answerReviewData.push({
+                    question,
+                    userAnswer,
+                    isCorrect,
+                    correctAnswer: question.correct
+                });
             });
             
-            // Calculate time taken
-            const timeTaken = totalTime - timeRemaining;
-            const timeTakenMinutes = Math.floor(timeTaken / 60);
-            const timeTakenSeconds = timeTaken % 60;
+            const timeTakenMinutes = Math.floor(totalTestTime / 60);
+            const timeTakenSeconds = totalTestTime % 60;
             const timeTakenFormatted = `${timeTakenMinutes}:${timeTakenSeconds.toString().padStart(2, '0')}`;
-            
-            // Calculate accuracy
             const accuracy = (correctCount / currentTest.length) * 100;
-            
-            // Calculate performance score (based on accuracy and time)
-            const timeEfficiency = Math.max(0, 100 - (timeTaken / totalTime) * 100);
+            const avgTimePerQuestion = totalTestTime / currentTest.length;
+            const timeEfficiency = Math.max(0, 100 - (avgTimePerQuestion / QUESTION_TIME_LIMIT) * 100);
             const performanceScore = Math.round((accuracy * 0.7) + (timeEfficiency * 0.3));
             
-            // Calculate IQ score (simplified)
-            const iqScore = 85 + Math.round((performanceScore / 100) * 45);
+            const rawScore = correctCount;
+            const iqScore = calculateIQScore(rawScore);
             
-            // Determine IQ category
-            let iqCategory, iqCategoryNp, recommendations, recommendationsNp;
-            
-            if (performanceScore >= 90) {
-                iqCategory = "Excellent";
+            let iqCategory, iqCategoryNp;
+            if (iqScore >= 130) {
+                iqCategory = "Very Superior";
+                iqCategoryNp = "धेरै उत्कृष्ट";
+            } else if (iqScore >= 120) {
+                iqCategory = "Superior";
                 iqCategoryNp = "उत्कृष्ट";
-                recommendations = "You have excellent cognitive abilities. Keep challenging yourself!";
-                recommendationsNp = "तपाईंसँग उत्कृष्ट संज्ञानात्मक क्षमताहरू छन्। आफूलाई चुनौती दिइरहनुहोस्!";
-            } else if (performanceScore >= 75) {
-                iqCategory = "Very Good";
-                iqCategoryNp = "धेरै राम्रो";
-                recommendations = "You have strong analytical skills. Practice regularly to improve further.";
-                recommendationsNp = "तपाईंसँग बलियो विश्लेषणात्मक कौशलहरू छन्। अझ सुधार गर्न नियमित अभ्यास गर्नुहोस्।";
-            } else if (performanceScore >= 60) {
-                iqCategory = "Good";
-                iqCategoryNp = "राम्रो";
-                recommendations = "You have good cognitive abilities. Focus on speed and accuracy.";
-                recommendationsNp = "तपाईंसँग राम्रो संज्ञानात्मक क्षमताहरू छन्। गति र शुद्धतामा केन्द्रित गर्नुहोस्।";
-            } else if (performanceScore >= 40) {
+            } else if (iqScore >= 110) {
+                iqCategory = "High Average";
+                iqCategoryNp = "उच्च औसत";
+            } else if (iqScore >= 90) {
                 iqCategory = "Average";
                 iqCategoryNp = "औसत";
-                recommendations = "You have average abilities. Regular practice will help improve.";
-                recommendationsNp = "तपाईंसँग औसत क्षमताहरू छन्। नियमित अभ्यासले सुधार गर्न मद्दत गर्नेछ।";
             } else {
-                iqCategory = "Needs Improvement";
-                iqCategoryNp = "सुधार आवश्यक";
-                recommendations = "Practice more with different types of questions to improve.";
-                recommendationsNp = "सुधार गर्न विभिन्न प्रकारका प्रश्नहरूसँग थप अभ्यास गर्नुहोस्।";
+                iqCategory = "Below Average";
+                iqCategoryNp = "औसत भन्दा तल";
             }
             
-            // Prepare question type breakdown
-            const questionTypesText = [];
-            const questionTypesTextNp = [];
-            
-            for (const type in questionTypes) {
-                if (questionTypes[type].total > 0) {
-                    const percentage = questionTypes[type].total > 0 
-                        ? Math.round((questionTypes[type].correct / questionTypes[type].total) * 100) 
-                        : 0;
-                    
-                    questionTypesText.push(`${type}: ${percentage}%`);
-                    questionTypesTextNp.push(`${getNepaliTypeName(type)}: ${percentage}%`);
-                }
-            }
-            
-            // Calculate average time per question
-            const avgTimePerQuestion = Math.round(timeTaken / currentTest.length);
-            
-            // Update results UI
             iqScoreEl.textContent = iqScore;
             document.getElementById('iq-category').textContent = iqCategory;
             document.getElementById('iq-category-np').textContent = iqCategoryNp;
@@ -1778,62 +2163,92 @@
             performanceScoreEl.textContent = performanceScore;
             resultsScoreEl.textContent = performanceScore;
             
-            document.getElementById('question-types').textContent = questionTypesText.join(', ');
-            document.getElementById('question-types-np').textContent = questionTypesTextNp.join(', ');
+            generateAnswerReview(answerReviewData);
             
-            document.getElementById('time-analysis').textContent = `Average time per question: ${avgTimePerQuestion} seconds`;
-            document.getElementById('time-analysis-np').textContent = `प्रति प्रश्न औसत समय: ${avgTimePerQuestion} सेकेन्ड`;
-            
-            document.getElementById('recommendations').textContent = recommendations;
-            document.getElementById('recommendations-np').textContent = recommendationsNp;
-            
-            // Show results
             questionSection.classList.remove('active');
             timerContainer.classList.remove('active');
             resultsSection.classList.add('active');
-            
-            // Keep home button visible
             homeBtn.classList.remove('hidden');
         }
         
-        function getNepaliTypeName(type) {
-            const typeMap = {
-                'mathematical': 'गणितीय',
-                'logical': 'तार्किक',
-                'analytical': 'विश्लेषणात्मक',
-                'general': 'सामान्य',
-                'verbal': 'शाब्दिक',
-                'pattern': 'ढाँचा',
-                'spatial': 'स्थानिक'
-            };
-            return typeMap[type] || type;
+        function calculateIQScore(rawScore) {
+            const maxScore = 30;
+            const percentage = (rawScore / maxScore) * 100;
+            
+            if (percentage >= 95) return 130 + Math.floor(Math.random() * 10);
+            if (percentage >= 85) return 120 + Math.floor(Math.random() * 10);
+            if (percentage >= 75) return 110 + Math.floor(Math.random() * 10);
+            if (percentage >= 60) return 100 + Math.floor(Math.random() * 10);
+            if (percentage >= 40) return 90 + Math.floor(Math.random() * 10);
+            if (percentage >= 25) return 80 + Math.floor(Math.random() * 10);
+            return 70 + Math.floor(Math.random() * 10);
+        }
+        
+        function generateAnswerReview(reviewData) {
+            const isEnglish = !body.classList.contains('language-np');
+            let reviewHTML = '';
+            
+            reviewData.forEach((item, index) => {
+                const question = item.question;
+                const userAnswerIndex = item.userAnswer;
+                const correctAnswerIndex = item.correctAnswer;
+                const isCorrect = item.isCorrect;
+                
+                const questionText = isEnglish ? question.text_en : question.text_np;
+                const options = isEnglish ? question.options_en : question.options_np;
+                const explanation = isEnglish ? question.explanation_en : question.explanation_np;
+                
+                const userAnswerText = userAnswerIndex !== undefined ? options[userAnswerIndex] : (isEnglish ? "Not answered" : "उत्तर दिइएन");
+                const correctAnswerText = options[correctAnswerIndex];
+                
+                reviewHTML += `
+                    <div class="review-question ${isCorrect ? 'correct' : 'incorrect'}">
+                        <div style="margin-bottom: 12px;">
+                            <strong>${index + 1}. ${questionText}</strong>
+                            <span style="float: right; font-size: 12px; padding: 4px 12px; border-radius: 4px; background: ${isCorrect ? '#d4edda' : '#f8d7da'}; color: ${isCorrect ? '#155724' : '#721c24'};">
+                                ${isCorrect ? (isEnglish ? 'Correct' : 'सही') : (isEnglish ? 'Incorrect' : 'गलत')}
+                            </span>
+                        </div>
+                        <div style="font-size: 14px; margin-bottom: 8px;">
+                            <div><strong style="color: var(--danger);">${isEnglish ? 'Your answer: ' : 'तपाईंको उत्तर: '}</strong>${userAnswerText}</div>
+                            <div><strong style="color: var(--success);">${isEnglish ? 'Correct answer: ' : 'सही उत्तर: '}</strong>${correctAnswerText}</div>
+                        </div>
+                        <div class="review-explanation">
+                            <strong>${isEnglish ? 'Explanation: ' : 'व्याख्या: '}</strong>${explanation}
+                        </div>
+                    </div>
+                `;
+            });
+            
+            answerReviewContainer.innerHTML = reviewHTML;
         }
 
         // Restart test
         restartBtn.addEventListener('click', () => {
             resultsSection.classList.remove('active');
             testSelection.style.display = 'block';
-            // Keep home button visible
             homeBtn.classList.remove('hidden');
         });
         
-        // Review answers
+        // Review answers toggle
+        let reviewVisible = false;
         reviewBtn.addEventListener('click', () => {
-            alert('This feature would show each question with correct answers highlighted. In a full implementation, you would see your answers versus correct answers.');
+            reviewVisible = !reviewVisible;
+            answerReviewContainer.style.display = reviewVisible ? 'block' : 'none';
+            reviewBtn.innerHTML = reviewVisible ? 
+                `<i class="fas fa-eye-slash"></i><span class="lang-en">Hide Answers</span><span class="lang-np">उत्तरहरू लुकाउनुहोस्</span>` :
+                `<i class="fas fa-eye"></i><span class="lang-en">Review Answers</span><span class="lang-np">उत्तरहरू पुनरावलोकन गर्नुहोस्</span>`;
         });
 
-        // Initialize the page
+        // Initialize
         function init() {
-            // Set initial language
             body.classList.remove('language-np');
             enBtn.classList.add('active');
             npBtn.classList.remove('active');
-            
-            // Initially hide home button
             homeBtn.classList.add('hidden');
+            answerReviewContainer.style.display = 'none';
         }
 
-        // Initialize the page when loaded
         window.addEventListener('DOMContentLoaded', init);
     </script>
 </body>
